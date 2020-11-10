@@ -7,6 +7,8 @@ public class GUIDemo {
 
         frame = new WindowPatternFrame();
 
+
+        //felipe lindo
         frame.setVisible(true);
     }
 }
