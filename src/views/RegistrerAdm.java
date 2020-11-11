@@ -37,10 +37,10 @@ public class RegistrerAdm extends  WindowPatternFrame{
 
         label = new JLabel("IDADE: ");
         addComponet(label, 4,0,1,1);
-        JTextField textField2 = new JTextField(3);
+        JTextField textField2 = new NumberMask(3);
         addComponet(textField2,4,1,3,1);
 
-        label = new JLabel("IDADE: ");
+        label = new JLabel("EMAIL: ");
         addComponet(label, 5,0,1,1);
         JTextField textField3 = new JTextField(20);
         addComponet(textField3,5,1,3,1);
@@ -57,7 +57,7 @@ public class RegistrerAdm extends  WindowPatternFrame{
         constraints.gridheight = height;
 
         constraints.insets = FIELD_INSETS;
-        //contraints.fill = GridBagContraints.BOTH; ( expandir componente )
+        constraints.fill = GridBagConstraints.BOTH;
 
         layout.setConstraints(comp, constraints);
         add(comp);

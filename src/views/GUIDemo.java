@@ -10,7 +10,7 @@ public class GUIDemo {
         frame = new RegistrerAdm();
 
 
-        //felipe lindo
+        //felipe estranho
         frame.setVisible(true);
     }
 }
