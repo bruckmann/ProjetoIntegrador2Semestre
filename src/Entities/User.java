@@ -14,7 +14,7 @@ public abstract class User {
         this.name = name;
         this.role = role;
         this.password = password;
-        this.age = age;
+        this.setAge(age);
         this.email = email;
     }
 
@@ -32,6 +32,12 @@ public abstract class User {
 
     public int getAge(){
         return this.age;
+    }
+
+    private void setAge(int age) {
+        if(age > 0) {
+            this.age = age;
+        }
     }
 
     public String getEmail(){
