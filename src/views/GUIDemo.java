@@ -6,7 +6,8 @@ public class GUIDemo {
         JFrame frame = null;
 
         //frame = new WindowPatternFrame();
-        frame = new LogWindow();
+        //frame = new LogWindow();
+        frame = new RegistrerAdm();
 
 
         //felipe lindo
