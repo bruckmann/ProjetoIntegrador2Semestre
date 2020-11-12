@@ -13,17 +13,16 @@ public class UserRepository implements IUserRepository {
     private List<User> adminList = new ArrayList<User>();
     private Object Player;
 
-
-    public UserRepository() {
-
+    @Override
+    public List<User> getPlayers() {
+        return this.playerList;
     }
 
     @Override
-    public List<User> getUser() {
-        return null;
+    public List<User> getAdmins() {
+        return this.adminList;
     }
 
-    @Override
     public String saveUser(User user) {
 
         if (!Utils.isPlayer(user)) {
@@ -34,15 +33,15 @@ public class UserRepository implements IUserRepository {
             }
 
             return String.format("Administrador %s cadastrado com sucesso!", user.getName());
-        } else {
-            try {
-                playerList.add(user);
-            } catch (Exception e) {
-                return String.format("Não foi possivel cadastrar o %s", user.getName());
-            }
-
-            return String.format("Jogadador %s cadastrado com sucesso!", user.getName());
         }
+
+        try {
+            playerList.add(user);
+        } catch (Exception e) {
+            return String.format("Não foi possivel cadastrar o %s", user.getName());
+        }
+
+        return String.format("Jogadador %s cadastrado com sucesso!", user.getName());
     }
 
 

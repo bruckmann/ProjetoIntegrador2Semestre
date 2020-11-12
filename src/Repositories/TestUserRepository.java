@@ -4,6 +4,10 @@ import Entities.Admin;
 import Entities.Player;
 import Entities.User;
 import Util.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestUserRepository {
 
     public static void main(String[] args) {
@@ -26,9 +30,22 @@ public class TestUserRepository {
 
         UserRepository repo = new UserRepository();
 
+
+        //! saveUser TEST:
         System.out.println(repo.saveUser(admin1));
         System.out.println(repo.saveUser(player1));
+        System.out.println(repo.saveUser(player1));
+        System.out.println(repo.saveUser(player1));
+
+
+        List<User> players = new ArrayList<User>();
+        players = repo.getPlayers();
+
+        //! getUser TEST:
+        for(User player : players) {
+            System.out.printf("Nome do jogador %s", player.getName());
+            System.out.println();
+        }
 
     }
-
 }
