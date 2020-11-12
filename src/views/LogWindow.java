@@ -3,7 +3,7 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
-public class LogWindow extends WindowPatternFrame{
+public class LogWindow extends StandartFormatLog {
     public LogWindow (){
         super("JANELA DE LOGUIM");
 
@@ -18,7 +18,7 @@ public class LogWindow extends WindowPatternFrame{
         label = new JLabel("OLÁ FAÇA SEU LOGIN");
         label.setForeground(Color.BLACK);
         addComponet(label, 0, 0,5,2);
-        
+
         label = new JLabel("NOME: ");
         addComponet(label,2,0,1,1);
         JTextField textField = new JTextField(20);

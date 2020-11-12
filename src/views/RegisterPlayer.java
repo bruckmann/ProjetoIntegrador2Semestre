@@ -3,9 +3,7 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
-public class RegisterPlayer extends  WindowPatternFrame{
-    private GridBagLayout layout;
-
+public class RegisterPlayer extends StandartFormatLog {
 
     public RegisterPlayer(){
         super("Janela Cadastro Player");
@@ -15,6 +13,7 @@ public class RegisterPlayer extends  WindowPatternFrame{
 
     private void init(){
         JLabel label;
+        JPanel panel;
 
         label = new JLabel("OLÁ INSIRA SEUS DADOS: ");
         addComponet(label, 0, 0,5,2);
@@ -46,19 +45,21 @@ public class RegisterPlayer extends  WindowPatternFrame{
 
         label = new JLabel("TDAH: ");
         addComponet(label, 7,0,1,1);
-        label = new JLabel("SIM");
-        addComponet(label, 7,1,1,1);
-        JCheckBox jCheckBox = new JCheckBox();
-        addComponet(jCheckBox,7,2,1,1);
-        label = new JLabel("NÃO");
-        addComponet(label, 8,1,1,1);
-        JCheckBox jCheckBox1 = new JCheckBox();
-        addComponet(jCheckBox1,8,2,1,1);
+        panel = new JPanel();
+        ButtonGroup buttonGroup = new ButtonGroup();
+        JRadioButton jRadioButton = new JRadioButton("SIM");
+        buttonGroup.add(jRadioButton);
+        JRadioButton jRadioButton2 = new JRadioButton("NÃO");
+        buttonGroup.add(jRadioButton2);
+        panel.add(jRadioButton);
+        panel.add(jRadioButton2);
+        addComponet(panel,7,1,1,1);
+
 
 
         JButton button = new JButton("CRIAR CONTA");
         button.setForeground(Color.BLUE);
-        addComponet(button, 9,1,1,1);
+        addComponet(button, 10,1,1,1);
     }
 
 
