@@ -18,7 +18,7 @@ public abstract class User {
         this.email = email;
     }
 
-    public int getUser_id(){
+    public int getId(){
         return this.user_id;
     }
 

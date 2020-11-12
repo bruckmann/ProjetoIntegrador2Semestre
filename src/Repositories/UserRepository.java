@@ -1,6 +1,5 @@
 package Repositories;
 
-import Entities.Player;
 import Entities.User;
 import Util.Utils;
 
@@ -11,7 +10,6 @@ public class UserRepository implements IUserRepository {
 
     private List<User> playerList = new ArrayList<User>();
     private List<User> adminList = new ArrayList<User>();
-    private Object Player;
 
     @Override
     public List<User> getPlayers() {
@@ -46,12 +44,37 @@ public class UserRepository implements IUserRepository {
 
 
     @Override
-    public boolean deleteUser(int id) {
-        return false;
+    public String deletePlayer(int id) {
+        for (User player : this.playerList) {
+            if (player.getId() == id) {
+                try {
+                    this.playerList.remove(player);
+                    return "Jogador deletado com sucesso!";
+                } catch (Exception e) {
+                    return "Erro ao deletar jogador";
+                }
+            }
+        }
+        return null;
     }
 
     @Override
-    public boolean updateUser(User user) {
-        return false;
+    public String deleteAdmin(int id) {
+        for (User admin : this.adminList) {
+            if (admin.getId() == id) {
+                try {
+                    this.adminList.remove(admin);
+                    return "Administrador deletado com sucesso!";
+                } catch (Exception e) {
+                    return "Erro ao deletar Administrador";
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String updateUser(User user) {
+        return null;
     }
 }
