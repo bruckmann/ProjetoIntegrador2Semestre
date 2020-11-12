@@ -3,18 +3,12 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
-public class RegistrerAdm extends  WindowPatternFrame{
-    private static final Insets FIELD_INSETS = new Insets(7,5,0,0);
+public class RegisterPlayer extends  WindowPatternFrame{
     private GridBagLayout layout;
-    private GridBagConstraints constraints;
 
-    public RegistrerAdm(){
-        super("Janela Cadastro Administrador");
 
-        layout = new GridBagLayout();
-        setLayout(layout);
-
-        constraints = new GridBagConstraints();
+    public RegisterPlayer(){
+        super("Janela Cadastro Player");
 
         init();
     }
@@ -45,21 +39,28 @@ public class RegistrerAdm extends  WindowPatternFrame{
         JTextField textField3 = new JTextField(20);
         addComponet(textField3,5,1,3,1);
 
+        label = new JLabel("SERIE: ");
+        addComponet(label, 6,0,1,1);
+        JTextField textField4 = new NumberMask(1);
+        addComponet(textField4,6,1,3,1);
+
+        label = new JLabel("TDAH: ");
+        addComponet(label, 7,0,1,1);
+        label = new JLabel("SIM");
+        addComponet(label, 7,1,1,1);
+        JCheckBox jCheckBox = new JCheckBox();
+        addComponet(jCheckBox,7,2,1,1);
+        label = new JLabel("NÃO");
+        addComponet(label, 8,1,1,1);
+        JCheckBox jCheckBox1 = new JCheckBox();
+        addComponet(jCheckBox1,8,2,1,1);
+
+
         JButton button = new JButton("CRIAR CONTA");
         button.setForeground(Color.BLUE);
-        addComponet(button, 7,1,1,1);
+        addComponet(button, 9,1,1,1);
     }
 
-    private void addComponet(JComponent comp, int row, int col, int width, int height) {
-        constraints.gridx = col;
-        constraints.gridy = row;
-        constraints.gridwidth = width;
-        constraints.gridheight = height;
 
-        constraints.insets = FIELD_INSETS;
-        constraints.fill = GridBagConstraints.BOTH;
-
-        layout.setConstraints(comp, constraints);
-        add(comp);
-    }
 }
+
