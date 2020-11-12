@@ -2,17 +2,12 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
-public class WindowPatternFrame extends JFrame {
+public class StandartFormatLog extends JFrame {
     public GridBagConstraints constraints;
     public GridBagLayout layout;
     public static final Insets FIELD_INSETS = new Insets(7,0,0,0);
 
-    public WindowPatternFrame(){
-        this("Demo WindowPatternFrame");
-
-    }
-
-    public WindowPatternFrame(String title) {
+    public StandartFormatLog(String title) {
         super(title);
         this.setSize(640,480);
         this.setResizable(false);

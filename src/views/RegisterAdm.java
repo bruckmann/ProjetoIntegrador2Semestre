@@ -3,11 +3,10 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
-public class RegisterAdm extends  WindowPatternFrame{
+public class RegisterAdm extends StandartFormatLog {
 
     public RegisterAdm(){
         super("Janela Cadastro Administrador");
-
 
         init();
     }
