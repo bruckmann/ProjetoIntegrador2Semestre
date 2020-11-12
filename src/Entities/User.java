@@ -40,6 +40,10 @@ public abstract class User {
         }
     }
 
+    public String getRole() {
+        return this.role;
+    }
+
     public String getEmail(){
         return this.email;
     }
