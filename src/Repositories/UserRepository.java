@@ -2,10 +2,12 @@ package Repositories;
 
 import Entities.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository implements IUserRepository {
 
+    private List<User> userList = new ArrayList<User>();
 
     @Override
     public List<User> getUser() {
