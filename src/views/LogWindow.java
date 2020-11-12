@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class LogWindow extends StandartFormatLog {
     public LogWindow (){
-        super("JANELA DE LOGUIM");
+        super("JANELA DE LOGIN");
 
 
         init();
