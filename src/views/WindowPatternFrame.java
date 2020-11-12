@@ -3,12 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WindowPatternFrame extends JFrame {
-    private GridBagConstraints constraints;
-    private  GridBagLayout layout;
-    private static final Insets FIELD_INSETS = new Insets(7,0,0,0);
+    public GridBagConstraints constraints;
+    public GridBagLayout layout;
+    public static final Insets FIELD_INSETS = new Insets(7,0,0,0);
 
     public WindowPatternFrame(){
         this("Demo WindowPatternFrame");
+
     }
 
     public WindowPatternFrame(String title) {
@@ -21,6 +22,9 @@ public class WindowPatternFrame extends JFrame {
 
         constraints = new GridBagConstraints();
 
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
 
     }
 

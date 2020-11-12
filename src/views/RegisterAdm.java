@@ -4,17 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class RegisterAdm extends  WindowPatternFrame{
-    private static final Insets FIELD_INSETS = new Insets(7,5,0,0);
-    private GridBagLayout layout;
-    private GridBagConstraints constraints;
 
     public RegisterAdm(){
         super("Janela Cadastro Administrador");
 
-        layout = new GridBagLayout();
-        setLayout(layout);
-
-        constraints = new GridBagConstraints();
 
         init();
     }
@@ -50,16 +43,4 @@ public class RegisterAdm extends  WindowPatternFrame{
         addComponet(button, 7,1,1,1);
     }
 
-    private void addComponet(JComponent comp, int row, int col, int width, int height) {
-        constraints.gridx = col;
-        constraints.gridy = row;
-        constraints.gridwidth = width;
-        constraints.gridheight = height;
-
-        constraints.insets = FIELD_INSETS;
-        constraints.fill = GridBagConstraints.BOTH;
-
-        layout.setConstraints(comp, constraints);
-        add(comp);
-    }
 }

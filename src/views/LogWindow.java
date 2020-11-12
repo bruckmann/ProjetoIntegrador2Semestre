@@ -4,17 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LogWindow extends WindowPatternFrame{
-    private static final Insets FIELD_INSETS = new Insets(7,5,0,0);
-    private GridBagLayout layout;
-    private GridBagConstraints constraints;
-
     public LogWindow (){
         super("JANELA DE LOGUIM");
 
-        layout = new GridBagLayout();
-        setLayout(layout);
-
-        constraints = new GridBagConstraints();
 
         init();
     }
@@ -26,10 +18,7 @@ public class LogWindow extends WindowPatternFrame{
         label = new JLabel("OLÁ FAÇA SEU LOGIN");
         label.setForeground(Color.BLACK);
         addComponet(label, 0, 0,5,2);
-
-        separator = new JSeparator();
-        addComponet(separator, 1 ,0,5,10);
-
+        
         label = new JLabel("NOME: ");
         addComponet(label,2,0,1,1);
         JTextField textField = new JTextField(20);
@@ -40,8 +29,6 @@ public class LogWindow extends WindowPatternFrame{
         JPasswordField passwordField = new JPasswordField(20);
         addComponet(passwordField, 3,1,3,1);
 
-        separator = new JSeparator();
-        addComponet(separator, 4 ,1,3,1);
 
         label = new JLabel("CRIAR CONTA: ");
         addComponet(label, 5,0,1,1);
@@ -58,16 +45,4 @@ public class LogWindow extends WindowPatternFrame{
         addComponet(button2, 5,3,1,1);
     }
 
-    private void addComponet(JComponent comp, int row, int col, int width, int height){
-        constraints.gridx = col;
-        constraints.gridy = row;
-        constraints.gridwidth = width;
-        constraints.gridheight = height;
-
-        constraints.insets = FIELD_INSETS;
-        //contraints.fill = GridBagContraints.BOTH; ( expandir componente )
-
-        layout.setConstraints(comp, constraints);
-        add(comp);
-    }
 }

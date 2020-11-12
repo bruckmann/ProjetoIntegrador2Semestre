@@ -9,9 +9,9 @@ public class SigmaMain {
         JFrame frame = null;
 
         //frame = new WindowPatternFrame();
-        //frame = new LogWindow();
+        frame = new LogWindow();
         //frame = new RegisterAdm();
-        frame = new RegisterPlayer();
+        //frame = new RegisterPlayer();
 
 
         //felipe estranho
