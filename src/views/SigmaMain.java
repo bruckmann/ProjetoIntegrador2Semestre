@@ -9,8 +9,9 @@ public class SigmaMain {
 
         //frame = new WindowPatternFrame();
         //frame = new LogWindow();
-        frame = new RegisterAdm();
+        //frame = new RegisterAdm();
         //frame = new RegisterPlayer();
+        frame = new CreateQuestionFrame();
 
 
         //felipe estranho

@@ -23,9 +23,20 @@ public final class NumberMask extends JTextField {
                 jTextFieldKeyTyped(evt);}});
     }
 
+    public NumberMask(int maximo , int columns){
+        super();
+        setMaximoCaracteres(maximo);
+        setColumns(columns);
+
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldKeyTyped(evt);}});
+    }
+
     private void jTextFieldKeyTyped(KeyEvent evt) {
 
-        String caracteres="0987654321";
+        String caracteres="-0987654321";
         if(!caracteres.contains(evt.getKeyChar()+"")){
             evt.consume();
         }

@@ -14,6 +14,9 @@ public class LogWindow extends StandartFormatLog {
     private void init(){
         JLabel label;
         JSeparator separator;
+        JTextField textField;
+        JPasswordField passwordField;
+        JButton button;
 
         label = new JLabel("OLÁ FAÇA SEU LOGIN");
         label.setForeground(Color.BLACK);
@@ -21,19 +24,19 @@ public class LogWindow extends StandartFormatLog {
 
         label = new JLabel("NOME: ");
         addComponet(label,2,0,1,1);
-        JTextField textField = new JTextField(20);
+        textField = new JTextField(20);
         addComponet(textField, 2,1,3,1);
 
         label = new JLabel("SENHA: ");
         addComponet(label, 3,0,1,1);
-        JPasswordField passwordField = new JPasswordField(20);
+        passwordField = new JPasswordField(20);
         addComponet(passwordField, 3,1,3,1);
 
 
         label = new JLabel("CRIAR CONTA: ");
         addComponet(label, 5,0,1,1);
 
-        JButton button = new JButton("ADMINISTRADOR");
+        button = new JButton("ADMINISTRADOR");
         button.setForeground(Color.BLUE);
         addComponet(button, 5,1,1,1);
 
