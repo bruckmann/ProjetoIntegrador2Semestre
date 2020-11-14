@@ -42,7 +42,6 @@ public class UserRepository implements IUserRepository {
         return String.format("Jogadador %s cadastrado com sucesso!", user.getName());
     }
 
-
     @Override
     public String deletePlayer(int id) {
         for (User player : this.playerList) {
