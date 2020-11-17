@@ -35,11 +35,6 @@ public class RegisterPlayer extends StandartFormatLog {
         JTextField yearsOld = new NumberMask(3);
         addComponet(yearsOld,4,1,3,1);
 
-        label = new JLabel("EMAIL: ");
-        addComponet(label, 5,0,1,1);
-        JTextField textField3 = new JTextField(20);
-        addComponet(textField3,5,1,3,1);
-
         label = new JLabel("SERIE: ");
         addComponet(label, 6,0,1,1);
         JTextField grade = new NumberMask(1);
