@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LogWindow extends StandartFormatLog {
+    private WindowManager frame;
     public LogWindow (WindowManager windowManager){
 
         this.frame = windowManager;
@@ -44,7 +45,7 @@ public class LogWindow extends StandartFormatLog {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.showLogAdm();
             }
         });
         button.setForeground(Color.BLUE);
@@ -57,7 +58,7 @@ public class LogWindow extends StandartFormatLog {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.showLogPlayer();
             }
         });
         button2.setForeground(Color.RED);

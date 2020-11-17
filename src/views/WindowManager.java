@@ -34,6 +34,14 @@ public class WindowManager extends JFrame {
         setVisible(true);
     }
 
+    public void showLogAdm(){
+        layout.show(cardsPanel,RegisterAdm.class.getName());
+    }
+
+    public void showLogPlayer(){
+        layout.show(cardsPanel,RegisterPlayer.class.getName());
+    }
+
     private void createCards(){
         logWindow = new LogWindow(this);
         cardsPanel.add(logWindow, LogWindow.class.getName());
