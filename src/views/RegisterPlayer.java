@@ -3,11 +3,13 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class RegisterPlayer extends StandartFormatLog {
+
+
 
     public RegisterPlayer(){
         super("Janela Cadastro Player");
-
         init();
     }
 
@@ -20,18 +22,18 @@ public class RegisterPlayer extends StandartFormatLog {
 
         label = new JLabel("NOME: ");
         addComponet(label,2,0,1,1);
-        JTextField textField = new JTextField(20);
-        addComponet(textField,2,1,3,1);
+        JTextField name = new JTextField(20);
+        addComponet(name,2,1,3,1);
 
         label = new JLabel("SENHA: ");
         addComponet(label, 3,0,1,1);
-        JPasswordField passwordField = new JPasswordField();
-        addComponet(passwordField, 3,1,3,1);
+        JPasswordField password = new JPasswordField();
+        addComponet(password, 3,1,3,1);
 
         label = new JLabel("IDADE: ");
         addComponet(label, 4,0,1,1);
-        JTextField textField2 = new NumberMask(3);
-        addComponet(textField2,4,1,3,1);
+        JTextField yearsOld = new NumberMask(3);
+        addComponet(yearsOld,4,1,3,1);
 
         label = new JLabel("EMAIL: ");
         addComponet(label, 5,0,1,1);
@@ -40,8 +42,8 @@ public class RegisterPlayer extends StandartFormatLog {
 
         label = new JLabel("SERIE: ");
         addComponet(label, 6,0,1,1);
-        JTextField textField4 = new NumberMask(1);
-        addComponet(textField4,6,1,3,1);
+        JTextField grade = new NumberMask(1);
+        addComponet(grade,6,1,3,1);
 
         label = new JLabel("TDAH: ");
         addComponet(label, 7,0,1,1);
