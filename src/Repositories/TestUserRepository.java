@@ -17,7 +17,6 @@ public class TestUserRepository {
                 "Player",
                 "felipe123",
                 19,
-                "felipebruckmann@hotmail.com",
                 "Terceiro ano",
                 false);
 

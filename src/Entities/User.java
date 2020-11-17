@@ -7,15 +7,13 @@ public abstract class User {
     private String role;
     private String password;
     private int age;
-    private String email;
 
-    protected User (int user_id, String name, String role, String password, int age, String email) {
+    protected User (int user_id, String name, String role, String password, int age) {
         this.user_id = user_id;
         this.name = name;
-        this.role = role;
-        this.password = password;
+        this.setRole(role);
+        this.setPassword(password);
         this.setAge(age);
-        this.email = email;
     }
 
     public int getId(){
@@ -40,12 +38,28 @@ public abstract class User {
         }
     }
 
+    private void setRole(String role){
+        if (role.toLowerCase().equals("admin")) {
+            this.role = "admin";
+        }
+        else if (role.toLowerCase().equals("jogador")){
+            this.role = "player";
+        } else {
+            this.role = null;
+        }
+    }
+
+    private void setPassword(String password) {
+        if (password.length() <= 10) {
+            this.password = password;
+        } else {
+            this.password = null;
+        }
+    }
+
     public String getRole() {
         return this.role;
     }
 
-    public String getEmail(){
-        return this.email;
-    }
 
 }
