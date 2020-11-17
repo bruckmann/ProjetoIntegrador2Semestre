@@ -33,11 +33,6 @@ public class RegisterPlayer extends StandartFormatLog {
         JTextField textField2 = new NumberMask(3);
         addComponet(textField2,4,1,3,1);
 
-        label = new JLabel("EMAIL: ");
-        addComponet(label, 5,0,1,1);
-        JTextField textField3 = new JTextField(20);
-        addComponet(textField3,5,1,3,1);
-
         label = new JLabel("SERIE: ");
         addComponet(label, 6,0,1,1);
         JTextField textField4 = new NumberMask(1);

@@ -6,6 +6,11 @@ import javax.swing.*;
 public class WindowManager extends JFrame {
     public static final  String TITULO = "Janela Principal";
 
+    private LogWindow logWindow;
+    private RegisterPlayer registerPlayer;
+    private RegisterAdm registerAdm;
+    private CreateQuestionFrame createQuestionFrame;
+
     public WindowManager(){
         super(TITULO);
 
