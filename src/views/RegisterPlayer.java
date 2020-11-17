@@ -25,7 +25,7 @@ public class RegisterPlayer extends StandartFormatLog {
 
         label = new JLabel("SENHA: ");
         addComponet(label, 3,0,1,1);
-        JPasswordField passwordField = new JPasswordField(20);
+        JPasswordField passwordField = new JPasswordField();
         addComponet(passwordField, 3,1,3,1);
 
         label = new JLabel("IDADE: ");

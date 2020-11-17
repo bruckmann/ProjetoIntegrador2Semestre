@@ -11,6 +11,7 @@ public class StandartFormatLog extends JFrame {
         super(title);
         this.setSize(640,480);
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
 
         layout = new GridBagLayout();
         setLayout(layout);
