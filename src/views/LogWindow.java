@@ -2,16 +2,20 @@ package views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LogWindow extends StandartFormatLog {
-    public LogWindow (){
-        super("JANELA DE LOGIN");
+    public LogWindow (WindowManager windowManager){
 
+        this.frame = windowManager;
 
         init();
     }
 
     private void init(){
+
+
         JLabel label;
         JSeparator separator;
         JTextField textField;
@@ -37,6 +41,12 @@ public class LogWindow extends StandartFormatLog {
         addComponet(label, 5,0,1,1);
 
         button = new JButton("ADMINISTRADOR");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         button.setForeground(Color.BLUE);
         addComponet(button, 5,1,1,1);
 
@@ -44,6 +54,12 @@ public class LogWindow extends StandartFormatLog {
         addComponet(separator, 5 ,2,2,1);
 
         JButton button2 = new JButton("JOGADOR");
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         button2.setForeground(Color.RED);
         addComponet(button2, 5,3,1,1);
     }

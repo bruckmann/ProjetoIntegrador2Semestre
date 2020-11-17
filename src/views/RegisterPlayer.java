@@ -9,7 +9,7 @@ public class RegisterPlayer extends StandartFormatLog {
 
 
     public RegisterPlayer(){
-        super("Janela Cadastro Player");
+
         init();
     }
 

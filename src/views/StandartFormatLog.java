@@ -2,26 +2,19 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
-public class StandartFormatLog extends JFrame {
+public class StandartFormatLog extends JPanel {
     public GridBagConstraints constraints;
     public GridBagLayout layout;
     public static final Insets FIELD_INSETS = new Insets(7,0,0,0);
 
-    public StandartFormatLog(String title) {
-        super(title);
-        this.setSize(640,480);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
+    public StandartFormatLog() {
+
 
         layout = new GridBagLayout();
         setLayout(layout);
 
         constraints = new GridBagConstraints();
-
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-
+        
     }
 
     public void addComponet(JComponent comp, int row, int col, int width, int height) {

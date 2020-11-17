@@ -7,7 +7,6 @@ public class CreateQuestionFrame extends StandartFormatLog{
 
     public CreateQuestionFrame(){
 
-        super("Janela criação de perguntas");
 
         init();
     }
