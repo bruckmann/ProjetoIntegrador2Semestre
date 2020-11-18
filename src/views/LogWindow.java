@@ -1,12 +1,17 @@
 package views;
 
+import Util.ViewHelper;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LogWindow extends StandartFormatLog {
     private WindowManager frame;
+    private ViewHelper helper = new ViewHelper();
     public LogWindow (WindowManager windowManager){
 
         this.frame = windowManager;
@@ -18,9 +23,8 @@ public class LogWindow extends StandartFormatLog {
 
 
         JLabel label;
-        JSeparator separator;
-        JTextField textField;
-        JPasswordField passwordField;
+        JTextField name;
+        JPasswordField password;
         JButton button;
 
         label = new JLabel("OLÁ FAÇA SEU LOGIN");
@@ -29,13 +33,15 @@ public class LogWindow extends StandartFormatLog {
 
         label = new JLabel("NOME: ");
         addComponet(label,2,0,1,1);
-        textField = new JTextField(20);
-        addComponet(textField, 2,1,3,1);
+        name = new JTextField(20);
+        name.setName("nome");
+        addComponet(name, 2,1,3,1);
 
         label = new JLabel("SENHA: ");
         addComponet(label, 3,0,1,1);
-        passwordField = new JPasswordField(20);
-        addComponet(passwordField, 3,1,3,1);
+        password = new JPasswordField(20);
+        password.setName("senha");
+        addComponet(password, 3,1,3,1);
 
 
         label = new JLabel("CRIAR CONTA: ");
@@ -49,9 +55,9 @@ public class LogWindow extends StandartFormatLog {
             }
         });
         button.setForeground(Color.BLUE);
-        addComponet(button, 5,1,1,1);
+        addComponet(button, 5,1,3,1);
 
-        JButton button2 = new JButton("JOGADOR");
+        /*JButton button2 = new JButton("JOGADOR");
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,22 +65,43 @@ public class LogWindow extends StandartFormatLog {
             }
         });
         button2.setForeground(Color.RED);
-        addComponet(button2, 5,2,1,1);
+        addComponet(button2, 5,2,1,1); */
 
 
         label = new JLabel(" ");
         addComponet(label, 6,0,1,1);
 
         JButton buttonLog = new JButton("LOGAR");
-        /*buttonLog.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        buttonLog.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            java.util.List<JTextField> emptyFields;
+            List<JTextField> aJTextList = new ArrayList<JTextField>();
+            aJTextList.add(name);
+
+            emptyFields = helper.validateFields(aJTextList);
+            boolean isPssValid = password.getPassword().length > 0;
 
 
-        }); */
+            if(emptyFields.isEmpty()  && isPssValid) {
+                frame.ReturnToLogPage();
+            } else {
+                for(JTextField field : emptyFields) {
+                    JOptionPane.showMessageDialog(LogWindow.this,"O campo " + field.getName() + " não está preenchido\n",
+                            WindowManager.TITULO,
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
 
+                if(!isPssValid) {
+                    JOptionPane.showMessageDialog(LogWindow.this,"O campo " + password.getName() + " não está preenchido\n",
+                            WindowManager.TITULO,
+                            JOptionPane.INFORMATION_MESSAGE);
+
+                    }
+                }
+            }
+        });
         buttonLog.setForeground(Color.MAGENTA);
-        addComponet(buttonLog,7,1,1,1);
+        addComponet(buttonLog,7,1,3,1);
     }
-
 }

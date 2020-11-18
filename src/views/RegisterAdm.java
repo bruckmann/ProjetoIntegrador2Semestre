@@ -63,13 +63,20 @@ public class RegisterAdm extends StandartFormatLog {
                 boolean isPssValid = password.getPassword().length > 0;
 
                 if(emptyFields.isEmpty() && isPssValid) {
+                    JOptionPane.showMessageDialog(RegisterAdm.this,"Criação de conta concluida !!",
+                            WindowManager.TITULO,
+                            JOptionPane.INFORMATION_MESSAGE);
                     frame.ReturnToLogPage();
                 } else {
                     for (JTextField field : emptyFields) {
-                        System.out.println("O campo " + field.getName() + " não está preenchido\n");
+                        JOptionPane.showMessageDialog(RegisterAdm.this,"O campo " + field.getName() + " não está preenchido\n",
+                                WindowManager.TITULO,
+                                JOptionPane.INFORMATION_MESSAGE);
                     }
                     if (!isPssValid) {
-                        System.out.println("O campo " + password.getName() + " não está preenchido\n");
+                        JOptionPane.showMessageDialog(RegisterAdm.this,"O campo " + password.getName() + " não está preenchido\n",
+                                WindowManager.TITULO,
+                                JOptionPane.INFORMATION_MESSAGE);
                     }
                     System.out.println("-----------------------");
                 }
