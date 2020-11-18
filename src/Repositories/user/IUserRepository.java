@@ -1,7 +1,8 @@
 package Repositories.user;
 
-import java.util.List;
 import Entities.user.User;
+
+import java.util.List;
 
 public interface IUserRepository {
 
