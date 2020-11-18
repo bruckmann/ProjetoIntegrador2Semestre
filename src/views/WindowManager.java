@@ -34,14 +34,27 @@ public class WindowManager extends JFrame {
         setVisible(true);
     }
 
+    public void showLogAdm(){
+        layout.show(cardsPanel,RegisterAdm.class.getName());
+    }
+
+    public void showLogPlayer(){
+        layout.show(cardsPanel,RegisterPlayer.class.getName());
+    }
+
+    public void ReturnToLogPage(){
+
+        layout.show(cardsPanel,LogWindow.class.getName());
+    }
+
     private void createCards(){
         logWindow = new LogWindow(this);
         cardsPanel.add(logWindow, LogWindow.class.getName());
 
-        registerPlayer = new RegisterPlayer();
+        registerPlayer = new RegisterPlayer(this);
         cardsPanel.add(registerPlayer, RegisterPlayer.class.getName());
 
-        registerAdm = new RegisterAdm();
+        registerAdm = new RegisterAdm(this);
         cardsPanel.add(registerAdm, RegisterAdm.class.getName());
 
         createQuestionFrame = new CreateQuestionFrame();

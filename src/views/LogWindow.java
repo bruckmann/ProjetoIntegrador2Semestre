@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LogWindow extends StandartFormatLog {
+    private WindowManager frame;
     public LogWindow (WindowManager windowManager){
 
         this.frame = windowManager;
@@ -44,24 +45,36 @@ public class LogWindow extends StandartFormatLog {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.showLogAdm();
             }
         });
         button.setForeground(Color.BLUE);
         addComponet(button, 5,1,1,1);
 
-        separator = new JSeparator();
-        addComponet(separator, 5 ,2,2,1);
-
         JButton button2 = new JButton("JOGADOR");
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.showLogPlayer();
             }
         });
         button2.setForeground(Color.RED);
-        addComponet(button2, 5,3,1,1);
+        addComponet(button2, 5,2,1,1);
+
+
+        label = new JLabel(" ");
+        addComponet(label, 6,0,1,1);
+
+        JButton buttonLog = new JButton("LOGAR");
+        /*buttonLog.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+        }); */
+
+        buttonLog.setForeground(Color.MAGENTA);
+        addComponet(buttonLog,7,1,1,1);
     }
 
 }
