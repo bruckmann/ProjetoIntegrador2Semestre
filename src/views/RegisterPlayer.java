@@ -22,12 +22,12 @@ public class RegisterPlayer extends StandartFormatLog {
 
         label = new JLabel("NOME: ");
         addComponet(label,2,0,1,1);
-        JTextField name = new JTextField(20);
+        JTextField name = new JTextField(20););
+        JPasswordField password = new JPasswordField();
         addComponet(name,2,1,3,1);
 
         label = new JLabel("SENHA: ");
-        addComponet(label, 3,0,1,1);
-        JPasswordField password = new JPasswordField();
+        addComponet(label, 3,0,1,1;
         addComponet(password, 3,1,3,1);
 
         label = new JLabel("IDADE: ");
