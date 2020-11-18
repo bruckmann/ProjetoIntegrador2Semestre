@@ -5,7 +5,7 @@ import java.awt.*;
 
 
 public class WindowManager extends JFrame {
-    public static final  String TITULO = "Janela Principal";
+    public static final  String TITULO = "SIGMA";
 
     private CardLayout layout;
     private JPanel cardsPanel;

@@ -83,19 +83,27 @@ public class RegisterPlayer extends StandartFormatLog {
                 isButtonSelected = (jRadioButton.isSelected()) || (jRadioButton2.isSelected());
 
                 if(emptyFields.isEmpty() && isButtonSelected && isPssValid) {
+                    JOptionPane.showMessageDialog(RegisterPlayer.this,"Criação de conta concluida !!",
+                            WindowManager.TITULO,
+                            JOptionPane.INFORMATION_MESSAGE);
                     frame.ReturnToLogPage();
                 } else {
                     for(JTextField field : emptyFields) {
-                        System.out.println("O campo " + field.getName() + " não está preenchido\n");
+                        JOptionPane.showMessageDialog(RegisterPlayer.this,"O campo " + field.getName() + " não está preenchido\n",
+                                WindowManager.TITULO,
+                                JOptionPane.INFORMATION_MESSAGE);
                     }
                     if(!isButtonSelected) {
-                        System.out.println("O botão " + jRadioButton.getName() + " não está selecionado\n");
+                        JOptionPane.showMessageDialog(RegisterPlayer.this,"O botão " + jRadioButton.getName() + " não está selecionado\n",
+                                WindowManager.TITULO,
+                                JOptionPane.INFORMATION_MESSAGE);
                     }
                     if(!isPssValid) {
-                        System.out.println("O campo " + password.getName() + " não está preenchido\n");
+                        JOptionPane.showMessageDialog(RegisterPlayer.this,"O campo " + password.getName() + " não está preenchido\n",
+                                WindowManager.TITULO,
+                                JOptionPane.INFORMATION_MESSAGE);
 
                     }
-                    System.out.println("-----------------------");
                 }
             }
         });
