@@ -1,8 +1,9 @@
-package Repositories;
+package Repositories.user;
 
-import Entities.Admin;
-import Entities.Player;
-import Entities.User;
+import Entities.user.Admin;
+import Entities.user.Player;
+import Entities.user.User;
+
 import java.util.List;
 
 public class TestUserRepository {

@@ -1,4 +1,4 @@
-package Entities;
+package Entities.user;
 
 public class Player extends User {
 
