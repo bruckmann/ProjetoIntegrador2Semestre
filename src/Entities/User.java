@@ -4,16 +4,23 @@ public abstract class User {
 
     private int user_id;
     private String name;
-    private String role;
     private String password;
+    private String email;
     private int age;
 
-    protected User (int user_id, String name, String role, String password, int age) {
+    protected User (int user_id, String name, String password, int age) {
         this.user_id = user_id;
         this.name = name;
-        this.setRole(role);
-        this.setPassword(password);
-        this.setAge(age);
+        this.password = password;
+        this.age = age;
+    }
+
+    protected User(int user_id, String name, String password, int age, String email) {
+        this.user_id = user_id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.age = age;
     }
 
     public int getId(){
@@ -24,42 +31,11 @@ public abstract class User {
         return this.name;
     }
 
-    public String getPassword(){
-        return password;
-    }
 
     public int getAge(){
         return this.age;
     }
 
-    private void setAge(int age) {
-        if(age > 0) {
-            this.age = age;
-        }
-    }
-
-    private void setRole(String role){
-        if (role.toLowerCase().equals("admin")) {
-            this.role = "admin";
-        }
-        else if (role.toLowerCase().equals("jogador")){
-            this.role = "player";
-        } else {
-            this.role = null;
-        }
-    }
-
-    private void setPassword(String password) {
-        if (password.length() <= 10) {
-            this.password = password;
-        } else {
-            this.password = null;
-        }
-    }
-
-    public String getRole() {
-        return this.role;
-    }
-
+    public abstract String getEmail();
 
 }

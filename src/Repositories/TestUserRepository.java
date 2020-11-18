@@ -3,46 +3,30 @@ package Repositories;
 import Entities.Admin;
 import Entities.Player;
 import Entities.User;
-import Util.Utils;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class TestUserRepository {
 
     public static void main(String[] args) {
 
-        User player1 = new Player(1,
-                "Felipe Bruckmann",
-                "Player",
-                "felipe123",
-                19,
-                "Terceiro ano",
-                false);
 
-        User admin1 = new Admin(1,
-                "Felipe Bruckmann",
-                "admin",
-                "felipe123",
-                19,
-                "felipebruckmann@hotmail.com");
+        User admin = new Admin(1, "Edson", "edson123", 13, "edson@hotmail.com");
+        User player = new Player(1, "Edson", "edson123", 13, "2 serie", true);
 
         UserRepository repo = new UserRepository();
 
 
         //! saveUser TEST:
-        System.out.println(repo.saveUser(admin1));
-        System.out.println(repo.saveUser(player1));
-        System.out.println(repo.saveUser(player1));
-        System.out.println(repo.saveUser(player1));
+        System.out.println(repo.saveUser(admin));
+        System.out.println(repo.saveUser(player));
 
 
-        List<User> players = new ArrayList<User>();
+        List<User> players;
         players = repo.getPlayers();
 
         //! getUser TEST:
-        for(User player : players) {
-            System.out.printf("Nome do jogador %s", player.getName());
+        for(User playerList : players) {
+            System.out.printf("Nome do jogador %s", playerList.getName());
             System.out.println();
         }
 

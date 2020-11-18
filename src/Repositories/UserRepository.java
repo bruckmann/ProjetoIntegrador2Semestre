@@ -8,17 +8,17 @@ import java.util.List;
 
 public class UserRepository implements IUserRepository {
 
-    private List<User> playerList = new ArrayList<User>();
-    private List<User> adminList = new ArrayList<User>();
+    private static final List<User> playerList = new ArrayList<User>();
+    private static final List<User> adminList = new ArrayList<User>();
 
     @Override
     public List<User> getPlayers() {
-        return this.playerList;
+        return playerList;
     }
 
     @Override
     public List<User> getAdmins() {
-        return this.adminList;
+        return adminList;
     }
 
     public String saveUser(User user) {
@@ -44,10 +44,10 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public String deletePlayer(int id) {
-        for (User player : this.playerList) {
+        for (User player : playerList) {
             if (player.getId() == id) {
                 try {
-                    this.playerList.remove(player);
+                    playerList.remove(player);
                     return "Jogador deletado com sucesso!";
                 } catch (Exception e) {
                     return "Erro ao deletar jogador";
@@ -59,10 +59,10 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public String deleteAdmin(int id) {
-        for (User admin : this.adminList) {
+        for (User admin : adminList) {
             if (admin.getId() == id) {
                 try {
-                    this.adminList.remove(admin);
+                    adminList.remove(admin);
                     return "Administrador deletado com sucesso!";
                 } catch (Exception e) {
                     return "Erro ao deletar Administrador";
