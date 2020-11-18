@@ -1,25 +1,27 @@
 package Entities.questions;
 
+import java.util.List;
+
 public class Question {
 
-    private int questionId;
+    private final int questionId;
     private int type;
-    private String question;
-    private String trueAlternative;
-    private String falseAlternativeOne;
-    private String falseAlternativeTwo;
+    private String questionStatement;
+    private List<Alternative> alternativesList;
 
-    public Question(int questionId, String question, int type, String trueAlternative, String falseAlternativeOne, String falseAlternativeTwo) {
-        this.question = question;
+    public Question(int questionId, String questionStatement, int type, List<Alternative> alternatives) {
+        this.questionStatement = questionStatement;
         this.type = type;
-        this.trueAlternative = trueAlternative;
-        this.falseAlternativeOne = falseAlternativeOne;
-        this.falseAlternativeTwo = falseAlternativeTwo;
+        this.alternativesList = alternatives;
         this.questionId = questionId;
     }
 
     public int getId(){
         return this.questionId;
+    }
+
+    public String getQuestionStatement() {
+        return this.questionStatement;
     }
 
     public void setType(String type) {
@@ -34,6 +36,13 @@ public class Question {
         }
     }
 
+    public Alternative getRightAlternative() {
+     for (Alternative alternative : alternativesList) {
 
-
+         if(alternative.correct()) {
+            return alternative;
+        }
+     }
+      return null;
+    }
 }

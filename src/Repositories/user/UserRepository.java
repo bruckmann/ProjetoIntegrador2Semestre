@@ -21,59 +21,51 @@ public class UserRepository implements IUserRepository {
         return adminList;
     }
 
-    public String saveUser(User user) {
+    public void saveUser(User user) {
 
         if (!Utils.isPlayer(user)) {
             try {
                 adminList.add(user);
             } catch (Exception e) {
-                return String.format("Não foi possivel cadastrar o %s", user.getName());
+                e.printStackTrace();
             }
-
-            return String.format("Administrador %s cadastrado com sucesso!", user.getName());
         }
 
         try {
             playerList.add(user);
         } catch (Exception e) {
-            return String.format("Não foi possivel cadastrar o %s", user.getName());
+            e.printStackTrace();
         }
 
-        return String.format("Jogadador %s cadastrado com sucesso!", user.getName());
     }
 
     @Override
-    public String deletePlayer(int id) {
+    public void deletePlayer(int id) {
         for (User player : playerList) {
             if (player.getId() == id) {
                 try {
                     playerList.remove(player);
-                    return "Jogador deletado com sucesso!";
                 } catch (Exception e) {
-                    return "Erro ao deletar jogador";
+                    e.printStackTrace();
                 }
             }
         }
-        return null;
     }
 
     @Override
-    public String deleteAdmin(int id) {
+    public void deleteAdmin(int id) {
         for (User admin : adminList) {
             if (admin.getId() == id) {
                 try {
                     adminList.remove(admin);
-                    return "Administrador deletado com sucesso!";
                 } catch (Exception e) {
-                    return "Erro ao deletar Administrador";
+                    e.printStackTrace();
                 }
             }
         }
-        return null;
     }
 
     @Override
-    public String updateUser(User user) {
-        return null;
+    public void updateUser(User user) {
     }
 }

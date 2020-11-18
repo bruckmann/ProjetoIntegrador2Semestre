@@ -16,16 +16,10 @@ public class TestUserRepository {
 
         UserRepository repo = new UserRepository();
 
-
-        //! saveUser TEST:
-        System.out.println(repo.saveUser(admin));
-        System.out.println(repo.saveUser(player));
-
-
         List<User> players;
         players = repo.getPlayers();
 
-        //! getUser TEST:
+        //! user TEST
         for(User playerList : players) {
             System.out.printf("Nome do jogador %s", playerList.getName());
             System.out.println();

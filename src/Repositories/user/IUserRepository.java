@@ -8,9 +8,9 @@ public interface IUserRepository {
 
     public List<User> getAdmins();
     public List<User>getPlayers();
-    public String saveUser(User user);
-    public String deletePlayer(int id);
-    public String deleteAdmin(int id);
-    public String updateUser(User user);
+    public void saveUser(User user);
+    public void deletePlayer(int id);
+    public void deleteAdmin(int id);
+    public void updateUser(User user);
 
 }
