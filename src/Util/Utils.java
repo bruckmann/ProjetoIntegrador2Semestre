@@ -1,4 +1,5 @@
 package Util;
+import Entities.Player;
 import Entities.User;
 
 public class Utils {
@@ -7,7 +8,7 @@ public class Utils {
     private static Object Player;
 
     public static boolean isPlayer(User user) {
-        return user.getEmail() == null;
+        return user instanceof Entities.Player;
     }
 
 }
