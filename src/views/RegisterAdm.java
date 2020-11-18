@@ -2,12 +2,15 @@ package views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RegisterAdm extends StandartFormatLog {
+    private WindowManager frame;
 
-    public RegisterAdm(){
+    public RegisterAdm(WindowManager windowManager){
 
-
+        this.frame = windowManager;
         init();
     }
 
@@ -38,6 +41,12 @@ public class RegisterAdm extends StandartFormatLog {
         addComponet(email,5,1,3,1);
 
         JButton button = new JButton("CRIAR CONTA");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.ReturnToLogPage();
+            }
+        });
         button.setForeground(Color.BLUE);
         addComponet(button, 7,1,1,1);
     }
