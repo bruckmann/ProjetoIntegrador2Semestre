@@ -7,7 +7,7 @@ public class Utils {
     private static Object Player;
 
     public static boolean isPlayer(User user) {
-        return user.getRole().toLowerCase().equals("player");
+        return user.getEmail() == null;
     }
 
 }

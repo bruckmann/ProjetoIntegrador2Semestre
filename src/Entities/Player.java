@@ -6,7 +6,7 @@ public class Player extends User {
     private boolean tdah;
 
     public Player(int player_id, String name, String role, String password, int age,  String grade, boolean tdah) {
-        super(player_id, name, role, password, age);
+        super(player_id, name, password, age);
         this.grade = grade;
         this.tdah = tdah;
     }
@@ -17,6 +17,11 @@ public class Player extends User {
 
     public boolean getTdah() {
         return this.tdah;
+    }
+
+    @Override
+    public String getEmail(){
+        return null;
     }
 
 }
