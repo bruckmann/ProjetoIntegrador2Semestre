@@ -52,6 +52,10 @@ public class WindowManager extends JFrame {
         layout.show(cardsPanel,LogWindow.class.getName());
     }
 
+    public void ShowCreateQuestionForm(){
+        layout.show(cardsPanel,CreateQuestionFrame.class.getName());
+    }
+
     private void createCards(){
         logWindow = new LogWindow(this);
         cardsPanel.add(logWindow, LogWindow.class.getName());
@@ -62,10 +66,10 @@ public class WindowManager extends JFrame {
         registerAdm = new RegisterAdm(this);
         cardsPanel.add(registerAdm, RegisterAdm.class.getName());
 
-        createQuestionFrame = new CreateQuestionFrame();
+        createQuestionFrame = new CreateQuestionFrame(this);
         cardsPanel.add(createQuestionFrame,CreateQuestionFrame.class.getName());
 
-        questionManager = new QuestionManager();
+        questionManager = new QuestionManager(this);
         cardsPanel.add(questionManager,QuestionManager.class.getName());
 
     }
