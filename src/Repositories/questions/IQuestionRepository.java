@@ -10,6 +10,6 @@ public interface IQuestionRepository {
     public Question getQuestionById(int id);
     public void saveQuestion(Question question);
     public void deleteQuestion(int id);
-    public void updateQuestion(Question questionUpdate, int id);
+    public void updateQuestion(Question questionUpdate);
 
 }
