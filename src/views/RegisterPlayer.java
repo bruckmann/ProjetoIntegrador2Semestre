@@ -1,6 +1,6 @@
 package views;
 
-import Entities.User;
+
 import Util.ViewHelper;
 
 import javax.swing.*;

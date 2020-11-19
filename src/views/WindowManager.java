@@ -14,6 +14,7 @@ public class WindowManager extends JFrame {
     private RegisterPlayer registerPlayer;
     private RegisterAdm registerAdm;
     private CreateQuestionFrame createQuestionFrame;
+    private QuestionManager questionManager;
 
     public WindowManager(){
         super(TITULO);
@@ -38,8 +39,12 @@ public class WindowManager extends JFrame {
         layout.show(cardsPanel,RegisterAdm.class.getName());
     }
 
-    public void showLogPlayer(){
+   /*public void showLogPlayer(){
         layout.show(cardsPanel,RegisterPlayer.class.getName());
+    }*/
+
+    public void ManageQuestionTable(){
+        layout.show(cardsPanel,QuestionManager.class.getName());
     }
 
     public void ReturnToLogPage(){
@@ -59,6 +64,9 @@ public class WindowManager extends JFrame {
 
         createQuestionFrame = new CreateQuestionFrame();
         cardsPanel.add(createQuestionFrame,CreateQuestionFrame.class.getName());
+
+        questionManager = new QuestionManager();
+        cardsPanel.add(questionManager,QuestionManager.class.getName());
 
     }
 }

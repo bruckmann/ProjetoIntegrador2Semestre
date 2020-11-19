@@ -84,7 +84,7 @@ public class LogWindow extends StandartFormatLog {
 
 
             if(emptyFields.isEmpty()  && isPssValid) {
-                frame.ReturnToLogPage();
+                frame.ManageQuestionTable();
             } else {
                 for(JTextField field : emptyFields) {
                     JOptionPane.showMessageDialog(LogWindow.this,"O campo " + field.getName() + " não está preenchido\n",
