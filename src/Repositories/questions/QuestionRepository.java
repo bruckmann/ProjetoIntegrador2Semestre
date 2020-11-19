@@ -39,8 +39,8 @@ public class QuestionRepository implements IQuestionRepository {
     }
 
     @Override
-    public void updateQuestion(Question questionUpdate, int id) {
-       this.deleteQuestion(id);
+    public void updateQuestion(Question questionUpdate) {
+       this.deleteQuestion(questionUpdate.getId());
        this.saveQuestion(questionUpdate);
     }
 

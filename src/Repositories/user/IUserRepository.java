@@ -6,11 +6,10 @@ import java.util.List;
 
 public interface IUserRepository {
 
-    public List<User> getAdmins();
-    public List<User>getPlayers();
-    public String saveUser(User user);
-    public String deletePlayer(int id);
-    public String deleteAdmin(int id);
-    public String updateUser(User user);
+    List<User>getUsers();
+    User getUserById(int id);
+    void saveUser(User user);
+    void deleteUser(int id);
+    void updateUser(User user);
 
 }

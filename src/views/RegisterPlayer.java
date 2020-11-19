@@ -1,6 +1,5 @@
 package views;
 
-
 import Util.ViewHelper;
 
 import javax.swing.*;
