@@ -5,73 +5,73 @@ import java.awt.*;
 
 
 public class WindowManager extends JFrame {
-    public static final  String TITULO = "SIGMA";
+  public static final  String TITULO = "SIGMA";
 
-    private CardLayout layout;
-    private JPanel cardsPanel;
+  private CardLayout layout;
+  private JPanel cardsPanel;
 
-    private LogWindow logWindow;
-    private RegisterPlayer registerPlayer;
-    private RegisterAdm registerAdm;
-    private CreateQuestionFrame createQuestionFrame;
-    private QuestionManager questionManager;
+  private LogWindow logWindow;
+  private RegisterPlayer registerPlayer;
+  private RegisterAdm registerAdm;
+  private CreateQuestionFrame createQuestionFrame;
+  private QuestionManager questionManager;
 
-    public WindowManager(){
-        super(TITULO);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  public WindowManager(){
+    super(TITULO);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        layout = new CardLayout();
-        cardsPanel = new JPanel();
-        cardsPanel.setLayout(layout);
-        add(cardsPanel);
+    layout = new CardLayout();
+    cardsPanel = new JPanel();
+    cardsPanel.setLayout(layout);
+    add(cardsPanel);
 
-        createCards();
-    }
+    createCards();
+  }
 
-    public void showFrame(){
-        setSize(640,480);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
+  public void showFrame(){
+    setSize(640,480);
+    setResizable(false);
+    setLocationRelativeTo(null);
+    setVisible(true);
+  }
 
-    public void showLogAdm(){
-        layout.show(cardsPanel,RegisterAdm.class.getName());
-    }
+  public void showLogAdm(){
+    layout.show(cardsPanel,RegisterAdm.class.getName());
+  }
 
    /*public void showLogPlayer(){
         layout.show(cardsPanel,RegisterPlayer.class.getName());
     }*/
 
-    public void ManageQuestionTable(){
-        layout.show(cardsPanel,QuestionManager.class.getName());
-    }
+  public void ManageQuestionTable(){
+    layout.show(cardsPanel,QuestionManager.class.getName());
+  }
 
-    public void ReturnToLogPage(){
+  public void ReturnToLogPage(){
 
-        layout.show(cardsPanel,LogWindow.class.getName());
-    }
+    layout.show(cardsPanel,LogWindow.class.getName());
+  }
 
-    public void ShowCreateQuestionForm(){
-        layout.show(cardsPanel,CreateQuestionFrame.class.getName());
-    }
+  public void ShowCreateQuestionForm(){
+    layout.show(cardsPanel,CreateQuestionFrame.class.getName());
+  }
 
 
-    private void createCards(){
-        logWindow = new LogWindow(this);
-        cardsPanel.add(logWindow, LogWindow.class.getName());
+  private void createCards(){
+    logWindow = new LogWindow(this);
+    cardsPanel.add(logWindow, LogWindow.class.getName());
 
-        registerPlayer = new RegisterPlayer(this);
-        cardsPanel.add(registerPlayer, RegisterPlayer.class.getName());
+    registerPlayer = new RegisterPlayer(this);
+    cardsPanel.add(registerPlayer, RegisterPlayer.class.getName());
 
-        registerAdm = new RegisterAdm(this);
-        cardsPanel.add(registerAdm, RegisterAdm.class.getName());
+    registerAdm = new RegisterAdm(this);
+    cardsPanel.add(registerAdm, RegisterAdm.class.getName());
 
-        createQuestionFrame = new CreateQuestionFrame(this);
-        cardsPanel.add(createQuestionFrame,CreateQuestionFrame.class.getName());
+    createQuestionFrame = new CreateQuestionFrame(this);
+    cardsPanel.add(createQuestionFrame,CreateQuestionFrame.class.getName());
 
-        questionManager = new QuestionManager(this);
-        cardsPanel.add(questionManager,QuestionManager.class.getName());
+    questionManager = new QuestionManager(this);
+    cardsPanel.add(questionManager,QuestionManager.class.getName());
 
-    }
+  }
 }

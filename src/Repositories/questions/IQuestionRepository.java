@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface IQuestionRepository {
 
-    public List<Question> getQuestions();
-    public Question getQuestionById(int id);
-    public void saveQuestion(Question question);
-    public void deleteQuestion(int id);
-    public void updateQuestion(Question questionUpdate);
+  List<Question> getQuestions();
+  Question getQuestionById(int id);
+  void saveQuestion(Question question);
+  void deleteQuestion(int id);
+  void updateQuestion(Question questionUpdate);
 
 }

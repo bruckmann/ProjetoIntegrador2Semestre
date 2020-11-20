@@ -4,163 +4,169 @@ import Util.ViewHelper;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateQuestionFrame extends StandartFormatLog{
-    private WindowManager frame;
-    private ViewHelper helper = new ViewHelper();
+public class CreateQuestionFrame extends StandardFormatLog {
+  private final WindowManager frame;
 
-    private  JRadioButton somaRadio;
-    private  JRadioButton subtracaoRadio;
-    private  JRadioButton ambosRadio;
-    private  JTextArea question;
-    private  JRadioButton alternativeOne;
-    private  JRadioButton alternativeTwo;
-    private  JRadioButton alternativeThree;
-    private  JTextField answerOne;
-    private  JTextField answerTwo;
-    private  JTextField answerThree;
-    private ButtonGroup mathType;
-    private ButtonGroup alternatives;
+  private JRadioButton somaRadio;
+  private JRadioButton subtracaoRadio;
+  private JRadioButton ambosRadio;
+  private JRadioButton alternativeOne;
+  private JRadioButton alternativeTwo;
+  private JRadioButton alternativeThree;
+  private JTextArea question;
+  private JTextField answerOne;
+  private JTextField answerTwo;
+  private JTextField answerThree;
+  private ButtonGroup mathType;
+  private ButtonGroup alternatives;
 
-    public CreateQuestionFrame(WindowManager windowManager){
-        this.frame = windowManager;
-         addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentShown(ComponentEvent e) {
-                mathType.clearSelection();
-                alternatives.clearSelection();
-                answerOne.setText("");
-                answerTwo.setText("");
-                answerThree.setText("");
-                question.setText("");
+  public CreateQuestionFrame(WindowManager windowManager){
+    this.frame = windowManager;
 
-            }
-        });
+    addComponentListener(new ComponentAdapter() {
+      @Override
+      public void componentShown(ComponentEvent e) {
+        mathType.clearSelection();
+        alternatives.clearSelection();
+        answerOne.setText("");
+        answerTwo.setText("");
+        answerThree.setText("");
+        question.setText("");
+      }
+    });
 
-        init();
-    }
+    init();
+  }
 
-    private void init(){
-        JLabel label;
-        JPanel panel;
-        JScrollPane scrollPane;
+  private void init(){
+    JLabel label;
+    JPanel panel;
+    JScrollPane scrollPane;
 
-        label = new JLabel("OLÁ CRIE AQUI SUAS PERGUNTAS: ");
-        addComponet(label, 0, 0,5,2);
+    label = new JLabel("OLÁ CRIE AQUI SUAS PERGUNTAS: ");
+    addComponent(label, 0, 0,5,2);
 
-        label = new JLabel("TIPO: ");
-        addComponet(label,2,0,1,1);
-        panel = new JPanel();
-        mathType = new ButtonGroup();
-        somaRadio = new JRadioButton("SOMA");
-        somaRadio.setName("tipo");
-        mathType.add(somaRadio);
-        subtracaoRadio = new JRadioButton("SUBTRAÇÃO");
-        mathType.add(subtracaoRadio);
-        ambosRadio = new JRadioButton("AMBOS");
-        mathType.add(ambosRadio);
-        panel.add(somaRadio);
-        panel.add(subtracaoRadio);
-        panel.add(ambosRadio);
-        addComponet(panel,2,1,1,1);
+    label = new JLabel("TIPO: ");
+    addComponent(label,2,0,1,1);
+    panel = new JPanel();
 
-        label = new JLabel("PERGUNTA: ");
-        addComponet(label,3,0,1,1);
-        question = new JTextArea(5,30);
-        question.setName("pergunta");
-        scrollPane = new JScrollPane(question);
-        addComponet(scrollPane,3,1,1,5);
+    mathType = new ButtonGroup();
+    somaRadio = new JRadioButton("SOMA");
+    somaRadio.setName("tipo");
+    mathType.add(somaRadio);
+    subtracaoRadio = new JRadioButton("SUBTRAÇÃO");
+    mathType.add(subtracaoRadio);
+    ambosRadio = new JRadioButton("AMBOS");
+    mathType.add(ambosRadio);
 
-        label = new JLabel("ALTERNATIVAS");
-        addComponet(label,9,0,1,1);
-        panel = new JPanel();
-        alternatives = new ButtonGroup();
-        alternativeOne = new JRadioButton("alternativa 1");
-        alternativeOne.setName("alternativas");
-        alternatives.add(alternativeOne);
-        alternativeTwo = new JRadioButton("alternativa 2");
-        alternatives.add(alternativeTwo);
-        alternativeThree = new JRadioButton("alternativa 3");
-        alternatives.add(alternativeThree);
-        panel.add(alternativeOne);
-        panel.add(alternativeTwo);
-        panel.add(alternativeThree);
-        addComponet(panel,9,1,1,1);
+    panel.add(somaRadio);
+    panel.add(subtracaoRadio);
+    panel.add(ambosRadio);
+    addComponent(panel,2,1,1,1);
 
-        JPanel panel2 = new JPanel();
-        answerOne = new NumberMask(10,8);
-        answerOne.setName("alternativa 1");
-        answerTwo = new NumberMask(10,8);
-        answerTwo.setName("alternativa 2");
-        answerThree = new NumberMask(10,8);
-        answerThree.setName("alternativa 3");
-        panel2.add(answerOne);
-        panel2.add(answerTwo);
-        panel2.add(answerThree);
-        addComponet(panel2,10,1,5,1);
+    label = new JLabel("PERGUNTA: ");
+    addComponent(label,3,0,1,1);
+    question = new JTextArea(5,30);
+    question.setName("pergunta");
+    scrollPane = new JScrollPane(question);
+    addComponent(scrollPane,3,1,1,5);
 
+    label = new JLabel("ALTERNATIVAS");
+    addComponent(label,9,0,1,1);
+    panel = new JPanel();
 
-        JButton button = new JButton("CADASTRAR");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                java.util.List<JTextField> emptyFields;
-                boolean isButtonSelected;
-                boolean isButtonTypeSelected;
-                List<JTextField> aJTextList = new ArrayList<JTextField>();
-                aJTextList.add(answerOne);
-                aJTextList.add(answerTwo);
-                aJTextList.add(answerThree);
+    alternatives = new ButtonGroup();
+    alternativeOne = new JRadioButton("alternativa 1");
+    alternativeOne.setName("alternativas");
+    alternatives.add(alternativeOne);
+    alternativeTwo = new JRadioButton("alternativa 2");
+    alternatives.add(alternativeTwo);
+    alternativeThree = new JRadioButton("alternativa 3");
+    alternatives.add(alternativeThree);
 
-                emptyFields = helper.validateFields(aJTextList);
-                isButtonSelected = (alternativeOne.isSelected()) || (alternativeTwo.isSelected() ||
-                        (alternativeThree.isSelected()));
+    panel.add(alternativeOne);
+    panel.add(alternativeTwo);
+    panel.add(alternativeThree);
+    addComponent(panel,9,1,1,1);
 
-                isButtonTypeSelected = (somaRadio.isSelected()) || (subtracaoRadio.isSelected() ||
-                        (ambosRadio.isSelected()));
-                
-                boolean isTextArea = question.getText().length() > 0;
+    JPanel panel2 = new JPanel();
 
-                if(emptyFields.isEmpty() && isButtonSelected && isTextArea && isButtonTypeSelected) {
-                    JOptionPane.showMessageDialog(CreateQuestionFrame.this,"Criação de pergunta concluida !!",
-                            WindowManager.TITULO,
-                            JOptionPane.INFORMATION_MESSAGE);
-                    frame.ManageQuestionTable();
-                } else {
-                    if(!isButtonSelected) {
-                        JOptionPane.showMessageDialog(CreateQuestionFrame.this,"O botão " + alternativeOne.getName() + " não está selecionado\n",
-                                WindowManager.TITULO,
-                                JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    if(!isButtonTypeSelected) {
-                        JOptionPane.showMessageDialog(CreateQuestionFrame.this,"O botão " + somaRadio.getName() + " não está selecionado\n",
-                                WindowManager.TITULO,
-                                JOptionPane.INFORMATION_MESSAGE);
-                    }
+    answerOne = new NumberMask(10,8);
+    answerOne.setName("alternativa 1");
+    answerTwo = new NumberMask(10,8);
+    answerTwo.setName("alternativa 2");
+    answerThree = new NumberMask(10,8);
+    answerThree.setName("alternativa 3");
 
-                    for(JTextField field : emptyFields) {
-                        JOptionPane.showMessageDialog(CreateQuestionFrame.this,"O campo " + field.getName() + " não está preenchido\n",
-                                WindowManager.TITULO,
-                                JOptionPane.INFORMATION_MESSAGE);
-                    }
+    panel2.add(answerOne);
+    panel2.add(answerTwo);
+    panel2.add(answerThree);
+    addComponent(panel2,10,1,5,1);
 
-                    if(!isTextArea) {
-                        JOptionPane.showMessageDialog(CreateQuestionFrame.this,"O campo " + question.getName() + " não está preenchido\n",
-                                WindowManager.TITULO,
-                                JOptionPane.INFORMATION_MESSAGE);
-                    }
-                }
-            }
-        });
-        button.setForeground(Color.BLUE);
-        addComponet(button,13,1,1,1);
+    JButton button = new JButton("CADASTRAR");
+    button.addActionListener(e -> {
+      List<JTextField> emptyFields;
+      boolean isButtonSelected;
+      boolean isButtonTypeSelected;
+      List<JTextField> aJTextList = new ArrayList<JTextField>();
+      aJTextList.add(answerOne);
+      aJTextList.add(answerTwo);
+      aJTextList.add(answerThree);
 
+      emptyFields = ViewHelper.validateFields(aJTextList);
+      isButtonSelected = (alternativeOne.isSelected()) || (alternativeTwo.isSelected() ||
+              (alternativeThree.isSelected()));
 
-    }
+      isButtonTypeSelected = (somaRadio.isSelected()) || (subtracaoRadio.isSelected() ||
+              (ambosRadio.isSelected()));
+
+      boolean isTextArea = question.getText().length() > 0;
+
+      if(emptyFields.isEmpty() && isButtonSelected && isTextArea && isButtonTypeSelected) {
+        JOptionPane.showMessageDialog(CreateQuestionFrame.this,
+                "Criação de pergunta concluída !!",
+                WindowManager.TITULO,
+                JOptionPane.INFORMATION_MESSAGE);
+
+        frame.ManageQuestionTable();
+      } else {
+        if(!isButtonSelected) {
+          JOptionPane.showMessageDialog(CreateQuestionFrame.this,
+                  "O botão " + alternativeOne.getName() + " não está selecionado\n",
+                  WindowManager.TITULO,
+                  JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        if(!isButtonTypeSelected) {
+          JOptionPane.showMessageDialog(CreateQuestionFrame.this,
+                  "O botão " + somaRadio.getName() + " não está selecionado\n",
+                  WindowManager.TITULO,
+                  JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        for(JTextField field : emptyFields) {
+          JOptionPane.showMessageDialog(CreateQuestionFrame.this,
+                  "O campo " + field.getName() + " não está preenchido\n",
+                  WindowManager.TITULO,
+                  JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        if(!isTextArea) {
+          JOptionPane.showMessageDialog(CreateQuestionFrame.this,
+                  "O campo " + question.getName() + " não está preenchido\n",
+                  WindowManager.TITULO,
+                  JOptionPane.INFORMATION_MESSAGE);
+        }
+      }
+    });
+
+    button.setForeground(Color.BLUE);
+    addComponent(button,13,1,1,1);
+
+  }
 }

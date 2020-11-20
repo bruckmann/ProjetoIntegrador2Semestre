@@ -3,11 +3,10 @@ import Entities.user.User;
 
 public class Utils {
 
+  private static Object Player;
 
-    private static Object Player;
-
-    public static boolean isPlayer(User user) {
-        return user instanceof Entities.user.Player;
-    }
+  public static boolean isPlayer(User user) {
+    return user instanceof Entities.user.Player;
+  }
 
 }
