@@ -56,6 +56,7 @@ public class WindowManager extends JFrame {
         layout.show(cardsPanel,CreateQuestionFrame.class.getName());
     }
 
+
     private void createCards(){
         logWindow = new LogWindow(this);
         cardsPanel.add(logWindow, LogWindow.class.getName());
