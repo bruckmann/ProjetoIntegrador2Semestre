@@ -1,5 +1,8 @@
 package views;
 
+import Entities.user.Admin;
+import Entities.user.User;
+import Repositories.user.AdminRepository;
 import Util.ViewHelper;
 
 import javax.swing.*;
@@ -12,9 +15,10 @@ import java.util.List;
 public class RegisterAdm extends StandartFormatLog {
     private WindowManager frame;
     private ViewHelper helper = new ViewHelper();
+    private final AdminRepository admRepo;
 
     public RegisterAdm(WindowManager windowManager){
-
+        admRepo = new AdminRepository();
         this.frame = windowManager;
         init();
     }
@@ -51,6 +55,7 @@ public class RegisterAdm extends StandartFormatLog {
 
         JButton button = new JButton("CRIAR CONTA");
         button.addActionListener(new ActionListener() {
+            Integer id = 0;
             @Override
             public void actionPerformed(ActionEvent e) {
                 java.util.List<JTextField> emptyFields;
@@ -63,6 +68,24 @@ public class RegisterAdm extends StandartFormatLog {
                 boolean isPssValid = password.getPassword().length > 0;
 
                 if(emptyFields.isEmpty() && isPssValid) {
+                    id++;
+                    User admin = new Admin(id, name.getText(), String.valueOf(password.getPassword()),
+                            Integer.parseInt(yearsOld.getText()), email.getText());
+
+                    List<User> admins;
+                    admins = admRepo.getUsers();
+
+                    for(User adminList : admins) {
+                        if(adminList.getEmail().equals(email.getText())) {
+                            JOptionPane.showMessageDialog(RegisterAdm.this,"Esse email já está cadastrado!",
+                                    WindowManager.TITULO,
+                                    JOptionPane.INFORMATION_MESSAGE);
+                            return;
+                        }
+                    }
+
+                    admRepo.saveUser(admin);
+
                     JOptionPane.showMessageDialog(RegisterAdm.this,"Criação de conta concluida !!",
                             WindowManager.TITULO,
                             JOptionPane.INFORMATION_MESSAGE);
@@ -78,7 +101,6 @@ public class RegisterAdm extends StandartFormatLog {
                                 WindowManager.TITULO,
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
-                    System.out.println("-----------------------");
                 }
             }
         });
