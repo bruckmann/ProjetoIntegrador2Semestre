@@ -9,17 +9,33 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterAdm extends StandartFormatLog {
     private WindowManager frame;
-    private ViewHelper helper = new ViewHelper();
+    private final ViewHelper helper = new ViewHelper();
     private final AdminRepository admRepo;
+
+    private JTextField name;
+    private JPasswordField password;
+    private JTextField yearsOld;
+    private JTextField email;
 
     public RegisterAdm(WindowManager windowManager){
         admRepo = new AdminRepository();
         this.frame = windowManager;
+          addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                name.setText("");
+                password.setText("");
+                yearsOld.setText("");
+                email.setText("");
+           }
+        });
         init();
     }
 
@@ -31,25 +47,25 @@ public class RegisterAdm extends StandartFormatLog {
 
         label = new JLabel("NOME: ");
         addComponet(label,2,0,1,1);
-        JTextField name = new JTextField(20);
+        name = new JTextField(20);
         name.setName("Nome");
         addComponet(name,2,1,3,1);
 
         label = new JLabel("SENHA: ");
         addComponet(label, 3,0,1,1);
-        JPasswordField password = new JPasswordField(10);
+        password = new JPasswordField(10);
         password.setName("Senha");
         addComponet(password, 3,1,3,1);
 
         label = new JLabel("IDADE: ");
         addComponet(label, 4,0,1,1);
-        JTextField yearsOld = new NumberMask(3);
+        yearsOld = new NumberMask(3);
         yearsOld.setName("Idade");
         addComponet(yearsOld,4,1,3,1);
 
         label = new JLabel("EMAIL: ");
         addComponet(label, 5,0,1,1);
-        JTextField email = new JTextField(20);
+        email = new JTextField(20);
         email.setName("Email");
         addComponet(email,5,1,3,1);
 
@@ -106,6 +122,17 @@ public class RegisterAdm extends StandartFormatLog {
         });
         button.setForeground(Color.BLUE);
         addComponet(button, 7,1,1,1);
+
+         JButton buttonCancel = new JButton("Cancelar");
+         buttonCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.ReturnToLogPage();
+            }
+         });
+         buttonCancel.setForeground(Color.red);
+         addComponet(buttonCancel,7,2,2,1);
+
     }
 
 }
