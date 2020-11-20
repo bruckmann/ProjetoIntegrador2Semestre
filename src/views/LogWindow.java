@@ -1,6 +1,9 @@
 package views;
 
+import Entities.user.User;
+import Entities.user.Admin;
 import Util.ViewHelper;
+import Repositories.user.AdminRepository;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +15,8 @@ import java.util.List;
 public class LogWindow extends StandartFormatLog {
     private WindowManager frame;
     private ViewHelper helper = new ViewHelper();
+    private final AdminRepository admRepo = new AdminRepository();
+
     public LogWindow (WindowManager windowManager){
 
         this.frame = windowManager;
@@ -84,7 +89,20 @@ public class LogWindow extends StandartFormatLog {
 
 
             if(emptyFields.isEmpty()  && isPssValid) {
-                frame.ManageQuestionTable();
+                List<User> admins;
+                admins = admRepo.getUsers();
+
+                for(User adminList : admins) {
+                    if(String.valueOf(name.getText()).equals(adminList.getName())
+                            && String.valueOf(password.getPassword()).equals(adminList.getPassword()))
+                    {
+                        frame.ManageQuestionTable();
+                        return;
+                    }
+                }
+                JOptionPane.showMessageDialog(LogWindow.this,"Usuário ou senha inválido",
+                        WindowManager.TITULO,
+                        JOptionPane.INFORMATION_MESSAGE);
             } else {
                 for(JTextField field : emptyFields) {
                     JOptionPane.showMessageDialog(LogWindow.this,"O campo " + field.getName() + " não está preenchido\n",

@@ -31,11 +31,14 @@ public abstract class User {
         return this.name;
     }
 
+    public String getPassword() { return this.password; }
 
     public int getAge(){
         return this.age;
     }
 
-    public abstract String getEmail();
+    public String getEmail() {
+        return this.email;
+    }
 
 }
