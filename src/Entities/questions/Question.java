@@ -36,13 +36,13 @@ public class Question {
         }
     }
 
-    public Alternative getRightAlternative() {
+    public int getRightAlternative() {
      for (Alternative alternative : alternativesList) {
 
          if(alternative.correct()) {
-            return alternative;
+            return alternative.getValue();
         }
      }
-      return null;
+     return 1;
     }
 }

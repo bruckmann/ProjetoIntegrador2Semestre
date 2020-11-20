@@ -10,6 +10,10 @@ public class Alternative {
         this.isRight = isRight;
     }
 
+    public int getValue(){
+        return this.value;
+    }
+
     public boolean correct() {
         return this.isRight;
     }
