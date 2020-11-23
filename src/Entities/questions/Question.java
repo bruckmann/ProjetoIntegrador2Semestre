@@ -9,9 +9,9 @@ public class Question {
   private String questionStatement;
   private List<Alternative> alternativesList;
 
-  public Question(int questionId, String questionStatement, int type, List<Alternative> alternatives) {
+  public Question(int questionId, String questionStatement, String type, List<Alternative> alternatives) {
     this.questionStatement = questionStatement;
-    this.type = type;
+    this.setType(type);
     this.alternativesList = alternatives;
     this.questionId = questionId;
   }

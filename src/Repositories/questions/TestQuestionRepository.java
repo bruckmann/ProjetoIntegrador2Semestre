@@ -30,8 +30,8 @@ public class TestQuestionRepository {
     listOfAlternatives2.add(alternative22);
     listOfAlternatives2.add(alternative32);
 
-    Question question1 = new Question(1, "Quanto é 1+1", 1, listOfAlternatives1);
-    Question question2 = new Question(1, "Quanto é 2+2", 1, listOfAlternatives2);
+    Question question1 = new Question(1, "Quanto é 1+1", "soma", listOfAlternatives1);
+    Question question2 = new Question(1, "Quanto é 2+2", "soma", listOfAlternatives2);
 
     QuestionRepository questions = new QuestionRepository();
 

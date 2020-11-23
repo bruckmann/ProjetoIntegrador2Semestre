@@ -1,5 +1,8 @@
 package views;
 
+import Entities.questions.Alternative;
+import Entities.questions.Question;
+import Repositories.questions.QuestionRepository;
 import Util.ViewHelper;
 
 import javax.swing.*;
@@ -8,9 +11,12 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CreateQuestionFrame extends StandardFormatLog {
   private final WindowManager frame;
+
+  private QuestionRepository questRepo = new QuestionRepository();
 
   private JRadioButton somaRadio;
   private JRadioButton subtracaoRadio;
@@ -44,6 +50,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
   }
 
   private void init(){
+    AtomicInteger questId = new AtomicInteger(1);
     JLabel label;
     JPanel panel;
     JScrollPane scrollPane;
@@ -128,10 +135,32 @@ public class CreateQuestionFrame extends StandardFormatLog {
       boolean isTextArea = question.getText().length() > 0;
 
       if(emptyFields.isEmpty() && isButtonSelected && isTextArea && isButtonTypeSelected) {
+        String type = "";
+        List<Alternative> lAltList = new ArrayList<>();
+        lAltList.add(new Alternative(Integer.parseInt(answerOne.getText()), alternativeOne.isSelected()));
+        lAltList.add(new Alternative(Integer.parseInt(answerTwo.getText()), alternativeTwo.isSelected()));
+        lAltList.add(new Alternative(Integer.parseInt(answerThree.getText()), alternativeThree.isSelected()));
+
+        if(somaRadio.isSelected()) {
+          type = "soma";
+        } else if (subtracaoRadio.isSelected()) {
+          type = "subtracao";
+        } else {
+          type = "ambos";
+        }
+
+        Question quest = new Question(questId.getAndIncrement(), question.getText(), type, lAltList);
+
+        questRepo.saveQuestion(quest);
+
         JOptionPane.showMessageDialog(CreateQuestionFrame.this,
                 "Criação de pergunta concluída !!",
                 WindowManager.TITULO,
                 JOptionPane.INFORMATION_MESSAGE);
+
+        for(Question q : questRepo.getQuestions()) {
+          System.out.println("Questão id: " + q.getId() + q.getQuestionStatement());
+        }
 
         frame.ManageQuestionTable();
       } else {
@@ -168,5 +197,9 @@ public class CreateQuestionFrame extends StandardFormatLog {
     button.setForeground(Color.BLUE);
     addComponent(button,13,1,1,1);
 
+    JButton buttonCancel = new JButton("Cancelar");
+    buttonCancel.addActionListener(e -> frame.ManageQuestionTable());
+    buttonCancel.setForeground(Color.red);
+    addComponent(buttonCancel,13,2,1,1);
   }
 }
