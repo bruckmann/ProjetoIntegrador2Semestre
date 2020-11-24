@@ -20,7 +20,6 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
   private JRadioButton somaRadio;
   private JRadioButton subtracaoRadio;
-  private JRadioButton ambosRadio;
   private JRadioButton alternativeOne;
   private JRadioButton alternativeTwo;
   private JRadioButton alternativeThree;
@@ -57,7 +56,6 @@ public class CreateQuestionFrame extends StandardFormatLog {
           switch (ty){
             case "soma" -> somaRadio.setSelected(true);
             case "subtracao" -> subtracaoRadio.setSelected(true);
-            case "ambos" -> ambosRadio.setSelected(true);
           }
 
           int crrInd = 0;
@@ -104,12 +102,9 @@ public class CreateQuestionFrame extends StandardFormatLog {
     mathType.add(somaRadio);
     subtracaoRadio = new JRadioButton("SUBTRAÇÃO");
     mathType.add(subtracaoRadio);
-    ambosRadio = new JRadioButton("AMBOS");
-    mathType.add(ambosRadio);
 
     panel.add(somaRadio);
     panel.add(subtracaoRadio);
-    panel.add(ambosRadio);
     addComponent(panel,2,1,1,1);
 
     label = new JLabel("PERGUNTA: ");
@@ -165,8 +160,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
       isButtonSelected = (alternativeOne.isSelected()) || (alternativeTwo.isSelected() ||
               (alternativeThree.isSelected()));
 
-      isButtonTypeSelected = (somaRadio.isSelected()) || (subtracaoRadio.isSelected() ||
-              (ambosRadio.isSelected()));
+      isButtonTypeSelected = (somaRadio.isSelected()) || (subtracaoRadio.isSelected());
 
       boolean isTextArea = question.getText().length() > 0;
 
@@ -179,10 +173,8 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
         if(somaRadio.isSelected()) {
           type = "soma";
-        } else if (subtracaoRadio.isSelected()) {
+        } else{
           type = "subtracao";
-        } else {
-          type = "ambos";
         }
 
         Question quest = new Question(questId.getAndIncrement(), question.getText(), type, lAltList);
@@ -204,10 +196,8 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
           if(somaRadio.isSelected()) {
             typeUpdate = "soma";
-          } else if (subtracaoRadio.isSelected()) {
-            typeUpdate = "subtracao";
           } else {
-            typeUpdate = "ambos";
+            typeUpdate = "subtracao";
           }
           Question questUpdate =  new Question(questionFilled.getId(), question.getText(), typeUpdate, lAltListUpdate);;
           questRepo.updateQuestion(questUpdate);
