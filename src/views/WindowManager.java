@@ -56,8 +56,8 @@ public class WindowManager extends JFrame {
     layout.show(cardsPanel,LogWindow.class.getName());
   }
 
-  public void ShowCreateQuestionForm(Question Fquestion){
-    createQuestionFrame.setQuestion(Fquestion);
+  public void ShowCreateQuestionForm(Question lQuestionFilled){
+    createQuestionFrame.setQuestion(lQuestionFilled);
     layout.show(cardsPanel,CreateQuestionFrame.class.getName());
   }
 

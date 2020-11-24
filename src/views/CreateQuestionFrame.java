@@ -31,17 +31,17 @@ public class CreateQuestionFrame extends StandardFormatLog {
   private ButtonGroup mathType;
   private ButtonGroup alternatives;
 
-  public Question Fquestion;
+  public Question questionFilled;
 
   public CreateQuestionFrame(WindowManager windowManager){
     this.frame = windowManager;
 
-    Fquestion = null;
+    questionFilled = null;
 
     addComponentListener(new ComponentAdapter() {
       @Override
       public void componentShown(ComponentEvent e) {
-        if (Fquestion == null) {
+        if (questionFilled == null) {
           mathType.clearSelection();
           alternatives.clearSelection();
           answerOne.setText("");
@@ -49,11 +49,11 @@ public class CreateQuestionFrame extends StandardFormatLog {
           answerThree.setText("");
           question.setText("");
         }
-        if (Fquestion != null){
+        if (questionFilled != null){
           //mathType.getSelection();
           alternatives.getSelection();
 
-          String ty = Fquestion.getType();
+          String ty = questionFilled.getType();
           switch (ty){
             case "soma" -> somaRadio.setSelected(true);
             case "subtracao" -> subtracaoRadio.setSelected(true);
@@ -62,7 +62,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
           int crrInd = 0;
 
-          List<Alternative> lAlt = Fquestion.getAlternativesList();
+          List<Alternative> lAlt = questionFilled.getAlternativesList();
 
           answerOne.setText(String.valueOf(lAlt.get(0).getValue()));
           answerTwo.setText(String.valueOf(lAlt.get(1).getValue()));
@@ -77,7 +77,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
           alt.add(alternativeTwo);
           alt.add(alternativeThree);
           alt.get(crrInd).setSelected(true);
-          question.setText(Fquestion.getQuestionStatement());
+          question.setText(questionFilled.getQuestionStatement());
         }
       }
     });
@@ -187,7 +187,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
         Question quest = new Question(questId.getAndIncrement(), question.getText(), type, lAltList);
 
-        if (Fquestion == null) {
+        if (questionFilled == null) {
 
           questRepo.saveQuestion(quest);
 
@@ -209,7 +209,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
           } else {
             typeUpdate = "ambos";
           }
-          Question questUpdate =  new Question(Fquestion.getId(), question.getText(), typeUpdate, lAltListUpdate);;
+          Question questUpdate =  new Question(questionFilled.getId(), question.getText(), typeUpdate, lAltListUpdate);;
           questRepo.updateQuestion(questUpdate);
           JOptionPane.showMessageDialog(CreateQuestionFrame.this,
                   "Atualização de pergunta concluída !!",
@@ -262,7 +262,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
     addComponent(buttonCancel,14,1,1,1);
   }
 
-  public void setQuestion(Question Fquestion) {
-    this.Fquestion = Fquestion;
+  public void setQuestion(Question lQuestionFilled) {
+    this.questionFilled = lQuestionFilled;
   }
 }
