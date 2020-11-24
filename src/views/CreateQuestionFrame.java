@@ -50,15 +50,33 @@ public class CreateQuestionFrame extends StandardFormatLog {
           question.setText("");
         }
         if (Fquestion != null){
-          mathType.getSelection();
+          //mathType.getSelection();
           alternatives.getSelection();
+
+          String ty = Fquestion.getType();
+          switch (ty){
+            case "soma" -> somaRadio.setSelected(true);
+            case "subtracao" -> subtracaoRadio.setSelected(true);
+            case "ambos" -> ambosRadio.setSelected(true);
+          }
+
+          int crrInd = 0;
+
           List<Alternative> lAlt = Fquestion.getAlternativesList();
+
           answerOne.setText(String.valueOf(lAlt.get(0).getValue()));
           answerTwo.setText(String.valueOf(lAlt.get(1).getValue()));
           answerThree.setText(String.valueOf(lAlt.get(2).getValue()));
           for (Alternative alt : lAlt ){
-
+            if(alt.correct()){
+               crrInd = lAlt.indexOf(alt);
+            }
           }
+          List<JRadioButton> alt = new ArrayList<>();
+          alt.add(alternativeOne);
+          alt.add(alternativeTwo);
+          alt.add(alternativeThree);
+          alt.get(crrInd).setSelected(true);
           question.setText(Fquestion.getQuestionStatement());
         }
       }
