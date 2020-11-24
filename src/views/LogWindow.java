@@ -13,6 +13,10 @@ public class LogWindow extends StandardFormatLog {
   private final WindowManager frame;
   private final AdminRepository admRepo = new AdminRepository();
 
+  private final String title = WindowManager.TITULO;
+  private final int infoMessage = JOptionPane.INFORMATION_MESSAGE;
+  private final LogWindow thisFrame = LogWindow.this;
+
   public LogWindow (WindowManager windowManager){
 
     this.frame = windowManager;
@@ -59,7 +63,7 @@ public class LogWindow extends StandardFormatLog {
             }
         });
         button2.setForeground(Color.RED);
-        addComponet(button2, 5,2,1,1); */
+        addComponent(button2, 5,2,1,1); */
 
     label = new JLabel(" ");
     addComponent(label, 6,0,1,1);
@@ -86,23 +90,16 @@ public class LogWindow extends StandardFormatLog {
           }
         }
 
-        JOptionPane.showMessageDialog(LogWindow.this,
-                "Usuário ou senha inválido",
-                WindowManager.TITULO,
-                JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(thisFrame, "Usuário ou senha inválido", title, infoMessage);
       } else {
         for(JTextField field : emptyFields) {
-          JOptionPane.showMessageDialog(LogWindow.this,
-                  "O campo " + field.getName() + " não está preenchido\n",
-                  WindowManager.TITULO,
-                  JOptionPane.INFORMATION_MESSAGE);
+          String message = "O campo " + field.getName() + " não está preenchido\n";
+          JOptionPane.showMessageDialog(thisFrame, message, title, infoMessage);
         }
 
         if(!isPssValid) {
-          JOptionPane.showMessageDialog(LogWindow.this,
-                  "O campo " + password.getName() + " não está preenchido\n",
-                  WindowManager.TITULO,
-                  JOptionPane.INFORMATION_MESSAGE);
+          String message = "O campo " + password.getName() + " não está preenchido\n";
+          JOptionPane.showMessageDialog(thisFrame, message, title, infoMessage);
         }
       }
     });

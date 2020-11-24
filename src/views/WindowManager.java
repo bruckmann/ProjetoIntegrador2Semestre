@@ -42,10 +42,6 @@ public class WindowManager extends JFrame {
     layout.show(cardsPanel,RegisterAdm.class.getName());
   }
 
-   /*public void showLogPlayer(){
-        layout.show(cardsPanel,RegisterPlayer.class.getName());
-    }*/
-
   public void ManageQuestionTable(){
     questionManager.reload();
     layout.show(cardsPanel,QuestionManager.class.getName());

@@ -23,6 +23,10 @@ public class RegisterAdm extends StandardFormatLog {
   private JTextField yearsOld;
   private JTextField email;
 
+  private final String title = WindowManager.TITULO;
+  private final int infoMessage = JOptionPane.INFORMATION_MESSAGE;
+  private final RegisterAdm thisFrame = RegisterAdm.this;
+
   public RegisterAdm(WindowManager windowManager){
     admRepo = new AdminRepository();
     this.frame = windowManager;
@@ -95,34 +99,23 @@ public class RegisterAdm extends StandardFormatLog {
 
           for(User adminList : admins) {
             if(adminList.getEmail().equals(email.getText())) {
-              JOptionPane.showMessageDialog(RegisterAdm.this,
-                      "Esse email já está cadastrado!",
-                      WindowManager.TITULO,
-                      JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(thisFrame,"Esse email já está cadastrado!", title, infoMessage);
               return;
             }
           }
+          admRepo.saveUser(admin);
 
-            admRepo.saveUser(admin);
-
-            JOptionPane.showMessageDialog(RegisterAdm.this,
-                    "Criação de conta concluída !!",
-                    WindowManager.TITULO,
-                    JOptionPane.INFORMATION_MESSAGE);
-            frame.ReturnToLogPage();
+          JOptionPane.showMessageDialog(thisFrame,"Criação de conta concluída !!", title, infoMessage);
+          frame.ReturnToLogPage();
           } else {
           for (JTextField field : emptyFields) {
-            JOptionPane.showMessageDialog(RegisterAdm.this,
-                    "O campo " + field.getName() + " não está preenchido\n",
-                    WindowManager.TITULO,
-                    JOptionPane.INFORMATION_MESSAGE);
+            String message = "O campo " + field.getName() + " não está preenchido\n";
+            JOptionPane.showMessageDialog(thisFrame, message, title, infoMessage);
           }
 
           if (!isPssValid) {
-            JOptionPane.showMessageDialog(RegisterAdm.this,
-                    "O campo " + password.getName() + " não está preenchido\n",
-                    WindowManager.TITULO,
-                    JOptionPane.INFORMATION_MESSAGE);
+            String message = "O campo " + password.getName() + " não está preenchido\n";
+            JOptionPane.showMessageDialog(thisFrame, message, title, infoMessage);
           }
         }
       }

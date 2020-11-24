@@ -61,12 +61,9 @@ public class QuestionManager extends StandardFormatLog {
     //fim botão criar
 
     updateButton = new JButton("ALTERAR");
-    updateButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Question question = modelQuestions.getQuestion(questionTable.getSelectedRow());
-        frame.ShowCreateQuestionForm(question);
-      }
+    updateButton.addActionListener(e -> {
+      Question question = modelQuestions.getQuestion(questionTable.getSelectedRow());
+      frame.ShowCreateQuestionForm(question);
     });
     panel.add(updateButton);
     buttonGroup.add(updateButton);
@@ -74,14 +71,11 @@ public class QuestionManager extends StandardFormatLog {
     // fim botão alterar
 
     deleteButton = new JButton("DELETAR");
-    deleteButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Question question = modelQuestions.getQuestion(questionTable.getSelectedRow());
-        if (question != null) {
-          questRepo.deleteQuestion(question.getId());
-          reload();
-        }
+    deleteButton.addActionListener(e -> {
+      Question question = modelQuestions.getQuestion(questionTable.getSelectedRow());
+      if (question != null) {
+        questRepo.deleteQuestion(question.getId());
+        reload();
       }
     });
     panel.add(deleteButton);
@@ -96,15 +90,12 @@ public class QuestionManager extends StandardFormatLog {
      questionTable = new JTable(modelQuestions);
      questionTable.setPreferredScrollableViewportSize(new Dimension(300, 300));
      questionTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-     questionTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-       @Override
-       public void valueChanged(ListSelectionEvent e) {
-         if (!e.getValueIsAdjusting()) {
-           if (questionTable.getSelectedRow() >= 0) {
-             enableButtons();
-           } else {
-             disableButtons();
-           }
+     questionTable.getSelectionModel().addListSelectionListener(e -> {
+       if (!e.getValueIsAdjusting()) {
+         if (questionTable.getSelectedRow() >= 0) {
+           enableButtons();
+         } else {
+           disableButtons();
          }
        }
      });
