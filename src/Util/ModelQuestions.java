@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ModelQuestions extends AbstractTableModel {
   private List<Question> questions = new ArrayList<>();
-  private String[] columns = new String[] {"id" , "type", "question"};
+  private String[] columns = new String[] {"Id" , "Tipo", "Questão"};
 
   public ModelQuestions(List<Question> lQuestions){
     this.questions = lQuestions;

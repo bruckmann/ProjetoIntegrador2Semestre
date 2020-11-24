@@ -40,8 +40,8 @@ public class QuestionRepository implements IQuestionRepository {
 
   @Override
   public void updateQuestion(Question questionUpdate) {
-    this.deleteQuestion(questionUpdate.getId());
-    this.saveQuestion(questionUpdate);
+    Question qst = getQuestionById(questionUpdate.getId());
+    questionList.set(questionList.indexOf(qst), questionUpdate);
   }
 
 }
