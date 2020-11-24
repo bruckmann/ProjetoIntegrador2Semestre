@@ -187,12 +187,35 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
         Question quest = new Question(questId.getAndIncrement(), question.getText(), type, lAltList);
 
-        questRepo.saveQuestion(quest);
+        if (Fquestion == null) {
 
-        JOptionPane.showMessageDialog(CreateQuestionFrame.this,
-                "Criação de pergunta concluída !!",
-                WindowManager.TITULO,
-                JOptionPane.INFORMATION_MESSAGE);
+          questRepo.saveQuestion(quest);
+
+          JOptionPane.showMessageDialog(CreateQuestionFrame.this,
+                  "Criação de pergunta concluída !!",
+                  WindowManager.TITULO,
+                  JOptionPane.INFORMATION_MESSAGE);
+        } else {
+          String typeUpdate = "";
+          List<Alternative> lAltListUpdate = new ArrayList<>();
+          lAltListUpdate.add(new Alternative(Integer.parseInt(answerOne.getText()), alternativeOne.isSelected()));
+          lAltListUpdate.add(new Alternative(Integer.parseInt(answerTwo.getText()), alternativeTwo.isSelected()));
+          lAltListUpdate.add(new Alternative(Integer.parseInt(answerThree.getText()), alternativeThree.isSelected()));
+
+          if(somaRadio.isSelected()) {
+            typeUpdate = "soma";
+          } else if (subtracaoRadio.isSelected()) {
+            typeUpdate = "subtracao";
+          } else {
+            typeUpdate = "ambos";
+          }
+          Question questUpdate =  new Question(Fquestion.getId(), question.getText(), typeUpdate, lAltListUpdate);;
+          questRepo.updateQuestion(questUpdate);
+          JOptionPane.showMessageDialog(CreateQuestionFrame.this,
+                  "Atualização de pergunta concluída !!",
+                  WindowManager.TITULO,
+                  JOptionPane.INFORMATION_MESSAGE);
+        }
 
         for(Question q : questRepo.getQuestions()) {
           System.out.println("Questão id: " + q.getId() + q.getQuestionStatement());

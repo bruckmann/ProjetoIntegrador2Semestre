@@ -22,7 +22,7 @@ public class QuestionManager extends StandardFormatLog {
   private JTable questionTable;
   private final WindowManager frame;
   private ModelQuestions modelQuestions;
-  private QuestionRepository questionRepo = new QuestionRepository();
+  private QuestionRepository questRepo = new QuestionRepository();
 
   public QuestionManager(WindowManager windowManager){
 
@@ -33,11 +33,11 @@ public class QuestionManager extends StandardFormatLog {
   }
 
   public void reload(){
-    modelQuestions.reload(questionRepo.getQuestions());
+    modelQuestions.reload(questRepo.getQuestions());
   }
 
   private void createTable(){
-    modelQuestions = new ModelQuestions(questionRepo.getQuestions());
+    modelQuestions = new ModelQuestions(questRepo.getQuestions());
     setLayout(new BorderLayout(2,2));
 
 
@@ -72,6 +72,16 @@ public class QuestionManager extends StandardFormatLog {
     // fim botão alterar
 
     deleteButton = new JButton("DELETAR");
+    deleteButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        Question question =  modelQuestions.getQuestion(questionTable.getSelectedRow());
+        if (question != null) {
+          questRepo.deleteQuestion(question.getId());
+          reload();
+        }
+      }
+    });
     panel.add(deleteButton);
     buttonGroup.add(deleteButton);
     panelButtons.add(panel);
