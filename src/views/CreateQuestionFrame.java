@@ -31,18 +31,36 @@ public class CreateQuestionFrame extends StandardFormatLog {
   private ButtonGroup mathType;
   private ButtonGroup alternatives;
 
+  public Question Fquestion;
+
   public CreateQuestionFrame(WindowManager windowManager){
     this.frame = windowManager;
+
+    Fquestion = null;
 
     addComponentListener(new ComponentAdapter() {
       @Override
       public void componentShown(ComponentEvent e) {
-        mathType.clearSelection();
-        alternatives.clearSelection();
-        answerOne.setText("");
-        answerTwo.setText("");
-        answerThree.setText("");
-        question.setText("");
+        if (Fquestion == null) {
+          mathType.clearSelection();
+          alternatives.clearSelection();
+          answerOne.setText("");
+          answerTwo.setText("");
+          answerThree.setText("");
+          question.setText("");
+        }
+        if (Fquestion != null){
+          mathType.getSelection();
+          alternatives.getSelection();
+          List<Alternative> lAlt = Fquestion.getAlternativesList();
+          answerOne.setText(String.valueOf(lAlt.get(0).getValue()));
+          answerTwo.setText(String.valueOf(lAlt.get(1).getValue()));
+          answerThree.setText(String.valueOf(lAlt.get(2).getValue()));
+          for (Alternative alt : lAlt ){
+
+          }
+          question.setText(Fquestion.getQuestionStatement());
+        }
       }
     });
 
@@ -201,5 +219,9 @@ public class CreateQuestionFrame extends StandardFormatLog {
     buttonCancel.addActionListener(e -> frame.ManageQuestionTable());
     buttonCancel.setForeground(Color.red);
     addComponent(buttonCancel,13,2,1,1);
+  }
+
+  public void setQuestion(Question Fquestion) {
+    this.Fquestion = Fquestion;
   }
 }

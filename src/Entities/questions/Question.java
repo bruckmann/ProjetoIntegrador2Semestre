@@ -28,6 +28,10 @@ public class Question {
       return this.type;
   }
 
+  public List<Alternative> getAlternativesList(){
+    return this.alternativesList;
+  }
+
   public int getRightAlternative() {
     for (Alternative alternative : alternativesList) {
 

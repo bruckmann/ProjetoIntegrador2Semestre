@@ -1,5 +1,8 @@
 package views;
 
+import Entities.questions.Question;
+import Util.ModelQuestions;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -44,6 +47,7 @@ public class WindowManager extends JFrame {
     }*/
 
   public void ManageQuestionTable(){
+    questionManager.reload();
     layout.show(cardsPanel,QuestionManager.class.getName());
   }
 
@@ -52,7 +56,8 @@ public class WindowManager extends JFrame {
     layout.show(cardsPanel,LogWindow.class.getName());
   }
 
-  public void ShowCreateQuestionForm(){
+  public void ShowCreateQuestionForm(Question Fquestion){
+    createQuestionFrame.setQuestion(Fquestion);
     layout.show(cardsPanel,CreateQuestionFrame.class.getName());
   }
 
