@@ -259,7 +259,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
     JButton buttonCancel = new JButton("Cancelar");
     buttonCancel.addActionListener(e -> frame.ManageQuestionTable());
     buttonCancel.setForeground(Color.red);
-    addComponent(buttonCancel,13,2,1,1);
+    addComponent(buttonCancel,14,1,1,1);
   }
 
   public void setQuestion(Question Fquestion) {

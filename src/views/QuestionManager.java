@@ -28,7 +28,9 @@ public class QuestionManager extends StandardFormatLog {
 
     this.frame = windowManager;
 
+    createButtonCrud();
     createTable();
+    createButtonCancel();
 
   }
 
@@ -36,13 +38,13 @@ public class QuestionManager extends StandardFormatLog {
     modelQuestions.reload(questRepo.getQuestions());
   }
 
-  private void createTable(){
+  private void createButtonCrud() {
     modelQuestions = new ModelQuestions(questRepo.getQuestions());
-    setLayout(new BorderLayout(2,2));
+    setLayout(new BorderLayout(2, 2));
 
 
     panelButtons = new JPanel();
-    panelButtons.setPreferredSize(new Dimension(150,40));
+    panelButtons.setPreferredSize(new Dimension(150, 40));
     JPanel panel = new JPanel();
     ButtonGroup buttonGroup = new ButtonGroup();
 
@@ -62,7 +64,7 @@ public class QuestionManager extends StandardFormatLog {
     updateButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        Question question =  modelQuestions.getQuestion(questionTable.getSelectedRow());
+        Question question = modelQuestions.getQuestion(questionTable.getSelectedRow());
         frame.ShowCreateQuestionForm(question);
       }
     });
@@ -75,7 +77,7 @@ public class QuestionManager extends StandardFormatLog {
     deleteButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        Question question =  modelQuestions.getQuestion(questionTable.getSelectedRow());
+        Question question = modelQuestions.getQuestion(questionTable.getSelectedRow());
         if (question != null) {
           questRepo.deleteQuestion(question.getId());
           reload();
@@ -85,32 +87,33 @@ public class QuestionManager extends StandardFormatLog {
     panel.add(deleteButton);
     buttonGroup.add(deleteButton);
     panelButtons.add(panel);
-    add(panelButtons,BorderLayout.NORTH);
+    add(panelButtons, BorderLayout.NORTH);
 
-     //fim dos botões
+  } //fim dos botões
 
-    panelQuestions = new JPanel();
-    questionTable = new JTable(modelQuestions);
-    questionTable.setPreferredScrollableViewportSize(new Dimension(300,300));
-    questionTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    questionTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-      @Override
-      public void valueChanged(ListSelectionEvent e) {
-        if (!e.getValueIsAdjusting()) {
-          if (questionTable.getSelectedRow() >= 0){
-            enableButtons();
-          }else{
-            disableButtons();
-          }
-        }
-      }
-    });
-    JScrollPane jScrollPane = new JScrollPane(questionTable);
-    panelQuestions.add(jScrollPane);
-    add(panelQuestions,BorderLayout.CENTER);
+   private void createTable() {
+     panelQuestions = new JPanel();
+     questionTable = new JTable(modelQuestions);
+     questionTable.setPreferredScrollableViewportSize(new Dimension(300, 300));
+     questionTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+     questionTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+       @Override
+       public void valueChanged(ListSelectionEvent e) {
+         if (!e.getValueIsAdjusting()) {
+           if (questionTable.getSelectedRow() >= 0) {
+             enableButtons();
+           } else {
+             disableButtons();
+           }
+         }
+       }
+     });
+     JScrollPane jScrollPane = new JScrollPane(questionTable);
+     panelQuestions.add(jScrollPane);
+     add(panelQuestions, BorderLayout.CENTER);
 
-    // fim da tabela
-
+   }// fim da tabela
+    private void createButtonCancel(){
     panelButtonsCancel = new JPanel();
     panelButtonsCancel.setPreferredSize(new Dimension(150,70));
     cancelButton = new JButton("CANCELAR");
