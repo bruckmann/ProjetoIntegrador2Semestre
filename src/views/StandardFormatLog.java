@@ -1,5 +1,6 @@
 package views;
 import javax.swing.*;
+import javax.swing.text.AttributeSet;
 import java.awt.*;
 
 public class StandardFormatLog extends JPanel {
@@ -14,6 +15,8 @@ public class StandardFormatLog extends JPanel {
     setLayout(layout);
 
     constraints = new GridBagConstraints();
+    setBackground(Color.decode("#5CDB95"));
+
 
   }
 

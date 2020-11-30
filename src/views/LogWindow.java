@@ -25,35 +25,42 @@ public class LogWindow extends StandardFormatLog {
   }
 
   private void init(){
-
-    JLabel label;
+    JLabel labelName;
+    JLabel labelPassword;
+    JLabel labelCreateAccount;
     JTextField name;
     JPasswordField password;
     JButton button;
 
-    label = new JLabel("OLÁ FAÇA SEU LOGIN");
-    label.setForeground(Color.BLACK);
-    addComponent(label, 0, 0,5,2);
+    JLabel header = new JLabel("OLÁ FAÇA SEU LOGIN");
+    addComponent(header,0,1,1,1);
+    header.setForeground(Color.BLACK);
 
-    label = new JLabel("NOME: ");
-    addComponent(label,2,0,1,1);
+
+
+    labelName = new JLabel("NOME: ");
     name = new JTextField(20);
     name.setName("nome");
+    addComponent(labelName,1,1,1,1);
     addComponent(name, 2,1,3,1);
 
-    label = new JLabel("SENHA: ");
-    addComponent(label, 3,0,1,1);
+    labelPassword = new JLabel("SENHA: ");
     password = new JPasswordField(20);
     password.setName("senha");
-    addComponent(password, 3,1,3,1);
 
-    label = new JLabel("CRIAR CONTA: ");
-    addComponent(label, 5,0,1,1);
+    addComponent(labelPassword, 3,1,1,1);
+    addComponent(password, 4,1,3,1);
+
+    labelCreateAccount = new JLabel("CRIAR CONTA: ");
+
+    addComponent(labelCreateAccount, 6,1,1,1);
 
     button = new JButton("ADMINISTRADOR");
+
     button.addActionListener(e -> frame.showLogAdm());
-    button.setForeground(Color.BLUE);
-    addComponent(button, 5,1,3,1);
+    button.setForeground(Color.decode("#EEDDFF"));
+    button.setBackground(Color.decode("#379683"));
+    addComponent(button, 7,1,3,1);
 
         /*JButton button2 = new JButton("JOGADOR");
         button2.addActionListener(new ActionListener() {
@@ -65,10 +72,11 @@ public class LogWindow extends StandardFormatLog {
         button2.setForeground(Color.RED);
         addComponent(button2, 5,2,1,1); */
 
-    label = new JLabel(" ");
-    addComponent(label, 6,0,1,1);
 
     JButton buttonLog = new JButton("LOGAR");
+    buttonLog.setForeground(Color.decode("#EEDDFF"));
+    buttonLog.setBackground(Color.decode("#379683"));
+
     buttonLog.addActionListener(e -> {
       List<JTextField> emptyFields;
       List<JTextField> aJTextList = new ArrayList<>();
@@ -103,8 +111,6 @@ public class LogWindow extends StandardFormatLog {
         }
       }
     });
-
-    buttonLog.setForeground(Color.MAGENTA);
-    addComponent(buttonLog,7,1,3,1);
+    addComponent(buttonLog,5,1,3,1);
   }
 }

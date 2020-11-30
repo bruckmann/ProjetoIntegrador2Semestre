@@ -32,7 +32,7 @@ public class WindowManager extends JFrame {
   }
 
   public void showFrame(){
-    setSize(640,480);
+    setSize(1080,720);
     setResizable(false);
     setLocationRelativeTo(null);
     setVisible(true);

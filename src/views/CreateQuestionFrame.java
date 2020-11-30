@@ -85,26 +85,34 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
   private void setComponent() {
     JLabel label;
-    JPanel panel;
+    JPanel panelType = new JPanel();
+    JPanel panelAlt = new JPanel();
+    JPanel panelAnswers = new JPanel();
     JScrollPane scrollPane;
+
+    panelType.setBackground(Color.decode("#5CDB95"));
+    panelAlt.setBackground(Color.decode("#5CDB95"));
+    panelAnswers.setBackground(Color.decode("#5CDB95"));
+
 
     label = new JLabel("OLÁ CRIE AQUI SUAS PERGUNTAS: ");
     addComponent(label, 0, 0,5,2);
 
     label = new JLabel("TIPO: ");
     addComponent(label,2,0,1,1);
-    panel = new JPanel();
 
     mathType = new ButtonGroup();
     somaRadio = new JRadioButton("SOMA");
+    somaRadio.setBackground(Color.decode("#5CDB95"));
     somaRadio.setName("tipo");
     mathType.add(somaRadio);
     subtracaoRadio = new JRadioButton("SUBTRAÇÃO");
+    subtracaoRadio.setBackground(Color.decode("#5CDB95"));
     mathType.add(subtracaoRadio);
 
-    panel.add(somaRadio);
-    panel.add(subtracaoRadio);
-    addComponent(panel,2,1,1,1);
+    panelType.add(somaRadio);
+    panelType.add(subtracaoRadio);
+    addComponent(panelType,2,1,1,1);
 
     label = new JLabel("PERGUNTA: ");
     addComponent(label,3,0,1,1);
@@ -115,24 +123,26 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
     label = new JLabel("ALTERNATIVAS");
     addComponent(label,9,0,1,1);
-    panel = new JPanel();
 
     alternatives = new ButtonGroup();
     alternativeOne = new JRadioButton("alternativa 1");
+    alternativeOne.setBackground(Color.decode("#5CDB95"));
     alternativeOne.setName("alternativas");
     alternatives.add(alternativeOne);
     alternativeTwo = new JRadioButton("alternativa 2");
+    alternativeTwo.setBackground(Color.decode("#5CDB95"));
     alternatives.add(alternativeTwo);
     alternativeThree = new JRadioButton("alternativa 3");
+    alternativeThree.setBackground(Color.decode("#5CDB95"));
     alternatives.add(alternativeThree);
 
-    panel.add(alternativeOne);
-    panel.add(alternativeTwo);
-    panel.add(alternativeThree);
+    panelAlt.add(alternativeOne);
+    panelAlt.add(alternativeTwo);
+    panelAlt.add(alternativeThree);
 
-    addComponent(panel,9,1,1,1);
+    addComponent(panelAlt,9,1,1,1);
 
-    JPanel panel2 = new JPanel();
+
 
     answerOne = new NumberMask(10,8);
     answerOne.setName("alternativa 1");
@@ -141,10 +151,10 @@ public class CreateQuestionFrame extends StandardFormatLog {
     answerThree = new NumberMask(10,8);
     answerThree.setName("alternativa 3");
 
-    panel2.add(answerOne);
-    panel2.add(answerTwo);
-    panel2.add(answerThree);
-    addComponent(panel2,10,1,5,1);
+    panelAnswers.add(answerOne);
+    panelAnswers.add(answerTwo);
+    panelAnswers.add(answerThree);
+    addComponent(panelAnswers,10,1,5,1);
 
     JButton insButton = new JButton("SALVAR");
     insButton.addActionListener(e -> {
