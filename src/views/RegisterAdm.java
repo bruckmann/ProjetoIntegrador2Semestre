@@ -120,12 +120,14 @@ public class RegisterAdm extends StandardFormatLog {
         }
       }
     });
-    button.setForeground(Color.BLUE);
-    addComponent(button, 7,1,1,1);
+    button.setForeground(Color.decode("#EEDDFF"));
+    button.setBackground(Color.decode("#379683"));
+    addComponent(button, 7,1,3,1);
 
     JButton buttonCancel = new JButton("Cancelar");
     buttonCancel.addActionListener(e -> frame.ReturnToLogPage());
-    buttonCancel.setForeground(Color.red);
-    addComponent(buttonCancel,7,2,2,1);
+    buttonCancel.setForeground(Color.decode("#EEDDFF"));
+    buttonCancel.setBackground(Color.decode("#379683"));
+    addComponent(buttonCancel,8,2,2,1);
   }
 }
