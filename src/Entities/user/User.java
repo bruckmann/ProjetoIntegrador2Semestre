@@ -23,6 +23,7 @@ public abstract class User {
     this.age = age;
   }
 
+
   public int getId(){
     return this.user_id;
   }
@@ -48,6 +49,19 @@ public abstract class User {
   public void setId (int id) {
     this.user_id = id;
   }
+
+  public void setPassword (String password) {
+    this.password = password;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  //! Métodos abstratos do que o player precisa:
+  public abstract void setTdah(boolean tdah);
+  public abstract void setGrade(String grade);
+  public abstract void  setUsername(String username);
 
 
 }

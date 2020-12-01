@@ -40,13 +40,23 @@ public class ModelQuestions extends AbstractTableModel {
     String value = null;
     if(rowIndex >= 0 && rowIndex <= questions.size()) {
       Question question = questions.get(rowIndex);
+      
+      int type = question.getType();
+      String parseType = null;
+      
+      if(type == 1) {
+        parseType = "soma";
+      }
+      else if(type == 2) {
+        parseType = "subtracao";
+      }
 
       switch (columnIndex){
         case 0:
           value = String.valueOf(question.getId());
           break;
         case 1:
-          value = question.getType();
+          value = parseType;
           break;
         case 2:
           value = question.getQuestionStatement();

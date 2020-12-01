@@ -52,10 +52,10 @@ public class CreateQuestionFrame extends StandardFormatLog {
         }
         if (questionFilled != null){
 
-          String ty = questionFilled.getType();
+          int ty = questionFilled.getType();
           switch (ty){
-            case "soma" -> somaRadio.setSelected(true);
-            case "subtracao" -> subtracaoRadio.setSelected(true);
+            case 1 -> somaRadio.setSelected(true);
+            case 2 -> subtracaoRadio.setSelected(true);
           }
 
           int crrInd = 0;
@@ -229,7 +229,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
   private void createQuestion(String question,String type, List<Alternative> lAltList) {
     int id = this.questId.getAndIncrement();
-    Question quest = new Question(id, question, type, lAltList);
+    Question quest = new Question(id, question, type);
 
     questRepo.saveQuestion(quest);
 
@@ -237,7 +237,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
   }
 
   private void updateQuestion(int questId, String question,String type, List<Alternative> lAltList) {
-    Question questUpdate = new Question(questId, question, type, lAltList);
+    Question questUpdate = new Question(questId, question, type);
 
     questRepo.updateQuestion(questUpdate);
 

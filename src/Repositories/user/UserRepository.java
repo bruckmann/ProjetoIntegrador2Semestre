@@ -6,23 +6,18 @@ import Util.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class UserRepository implements IUserRepository {
+public abstract class UserRepository  {
 
-  @Override
   public List<User> getUsers() {
     return null;
   }
 
-  @Override
   public abstract User getUserById(int id);
 
-  @Override
-  public abstract boolean saveUser(User user);
+  public abstract void saveUser(User user);
 
-  @Override
-  public abstract boolean deleteUser(int id);
+  public abstract void deleteUser(int id);
 
-  @Override
-  public abstract boolean updateUser(User user);
+  public abstract void updateUser(User user);
 
 }

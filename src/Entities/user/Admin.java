@@ -11,4 +11,19 @@ public class Admin extends User {
     return super.getEmail();
   }
 
+  @Override
+  public void setTdah(boolean tdah) {
+
+  }
+
+  @Override
+  public void setGrade(String grade) {
+
+  }
+
+  @Override
+  public void setUsername(String username) {
+
+  }
+
 }

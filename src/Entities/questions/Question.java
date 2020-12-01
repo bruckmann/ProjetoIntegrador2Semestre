@@ -8,12 +8,11 @@ public class Question {
   private int type;
   private int idCriador;
   private String questionStatement;
-  private List<Alternative> alternativesList;
+  public static List<Alternative> alternatives;
 
-  public Question(int questionId, String questionStatement, int type, List<Alternative> alternatives) {
+  public Question(int questionId, String questionStatement, String type) {
     this.questionStatement = questionStatement;
-    this.type = type;
-    this.alternativesList = alternatives;
+    this.setType(type);
     this.questionId = questionId;
   }
 
@@ -31,11 +30,21 @@ public class Question {
       return this.type;
   }
 
+
   public int getIdCriador() {
     return this.idCriador;
   }
 
-  public void setType(int type ) {
+  public void setType(String type ) {
+    if (type.toLowerCase().equals("soma")) {
+      this.type = 1;
+    }
+    else if (type.toLowerCase().equals("subtracao")) {
+      this.type = 2;
+    }
+  }
+
+  public void setType(int type) {
     this.type = type;
   }
 
@@ -52,11 +61,11 @@ public class Question {
   }
 
   public List<Alternative> getAlternativesList(){
-    return this.alternativesList;
+    return this.alternatives;
   }
 
   public int getRightAlternative() {
-    for (Alternative alternative : alternativesList) {
+    for (Alternative alternative : alternatives) {
 
       if(alternative.correct()) {
         return alternative.getValue();
