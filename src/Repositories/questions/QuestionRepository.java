@@ -31,7 +31,6 @@ public class QuestionRepository implements IQuestionRepository {
         question.setCriador(resultSet.getInt("id_criador"));
         question.setType(resultSet.getInt("id_tipo"));
         questions.add(question);
-        return questions;
       }
     } catch (Exception e) {
       e.printStackTrace();
