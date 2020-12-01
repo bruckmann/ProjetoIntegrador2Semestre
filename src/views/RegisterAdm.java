@@ -46,33 +46,34 @@ public class RegisterAdm extends StandardFormatLog {
 
   private void init(){
     JLabel label;
+    JLabel header;
 
-    label = new JLabel("OLÁ INSIRA SEUS DADOS: ");
-    addComponent(label, 0, 0,5,2);
+    header = new JLabel("OLÁ INSIRA SEUS DADOS: ");
+    addComponent(header, 0, 1,5,2);
 
     label = new JLabel("NOME: ");
-    addComponent(label,2,0,1,1);
+    addComponent(label,2,1,1,1);
     name = new JTextField(20);
     name.setName("Nome");
-    addComponent(name,2,1,3,1);
+    addComponent(name,3,1,3,1);
 
     label = new JLabel("SENHA: ");
-    addComponent(label, 3,0,1,1);
+    addComponent(label, 4,1,1,1);
     password = new JPasswordField(10);
     password.setName("Senha");
-    addComponent(password, 3,1,3,1);
+    addComponent(password, 5,1,3,1);
 
     label = new JLabel("IDADE: ");
-    addComponent(label, 4,0,1,1);
+    addComponent(label, 6,1,1,1);
     yearsOld = new NumberMask(3);
     yearsOld.setName("Idade");
-    addComponent(yearsOld,4,1,3,1);
+    addComponent(yearsOld,7,1,3,1);
 
     label = new JLabel("EMAIL: ");
-    addComponent(label, 5,0,1,1);
+    addComponent(label, 8,1,1,1);
     email = new JTextField(20);
     email.setName("Email");
-    addComponent(email,5,1,3,1);
+    addComponent(email,9,1,3,1);
 
     JButton button = new JButton("CRIAR CONTA");
     button.addActionListener(new ActionListener() {
@@ -122,12 +123,12 @@ public class RegisterAdm extends StandardFormatLog {
     });
     button.setForeground(Color.decode("#EEDDFF"));
     button.setBackground(Color.decode("#379683"));
-    addComponent(button, 7,1,3,1);
+    addComponent(button, 10,1,3,1);
 
     JButton buttonCancel = new JButton("Cancelar");
     buttonCancel.addActionListener(e -> frame.ReturnToLogPage());
     buttonCancel.setForeground(Color.decode("#EEDDFF"));
     buttonCancel.setBackground(Color.decode("#379683"));
-    addComponent(buttonCancel,8,2,2,1);
+    addComponent(buttonCancel,11,1,3,1);
   }
 }

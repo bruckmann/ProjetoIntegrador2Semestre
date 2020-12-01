@@ -22,6 +22,11 @@ public class QuestionManager extends StandardFormatLog {
   private ModelQuestions modelQuestions;
   private QuestionRepository questRepo = new QuestionRepository();
 
+  private final String title = WindowManager.TITULO;
+  private final int infoMessage = JOptionPane.INFORMATION_MESSAGE;
+  private final QuestionManager thisFrame = QuestionManager.this;
+
+
   public QuestionManager(WindowManager windowManager){
 
     this.frame = windowManager;
@@ -48,6 +53,9 @@ public class QuestionManager extends StandardFormatLog {
     ButtonGroup buttonGroup = new ButtonGroup();
 
     createButton = new JButton("CRIAR");
+    createButton.setForeground(Color.decode("#EEDDFF"));
+    createButton.setBackground(Color.decode("#379683"));
+
     createButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -60,6 +68,9 @@ public class QuestionManager extends StandardFormatLog {
     //fim botão criar
 
     updateButton = new JButton("ALTERAR");
+    updateButton.setForeground(Color.decode("#EEDDFF"));
+    updateButton.setBackground(Color.decode("#379683"));
+
     updateButton.addActionListener(e -> {
       Question question = modelQuestions.getQuestion(questionTable.getSelectedRow());
       frame.ShowCreateQuestionForm(question);
@@ -70,9 +81,14 @@ public class QuestionManager extends StandardFormatLog {
     // fim botão alterar
 
     deleteButton = new JButton("DELETAR");
+    deleteButton.setForeground(Color.decode("#EEDDFF"));
+    deleteButton.setBackground(Color.decode("#379683"));
+
+
     deleteButton.addActionListener(e -> {
       Question question = modelQuestions.getQuestion(questionTable.getSelectedRow());
       if (question != null) {
+        //JOptionPane.showConfirmDialog(thisFrame, "Você deseja deletar esta pergunta ?", title, infoMessage);
         questRepo.deleteQuestion(question.getId());
         reload();
       }
@@ -107,9 +123,12 @@ public class QuestionManager extends StandardFormatLog {
     panelButtonsCancel = new JPanel();
     panelButtonsCancel.setBackground(Color.decode("#8EE4AF"));
     panelButtonsCancel.setPreferredSize(new Dimension(150,70));
+
     cancelButton = new JButton("CANCELAR");
+    cancelButton.setForeground(Color.decode("#EEDDFF"));
+    cancelButton.setBackground(Color.decode("#379683"));
+
     cancelButton.addActionListener(e -> frame.ReturnToLogPage());
-    cancelButton.setForeground(Color.red);
     panelButtonsCancel.add(cancelButton);
     add(panelButtonsCancel,BorderLayout.SOUTH);
 
