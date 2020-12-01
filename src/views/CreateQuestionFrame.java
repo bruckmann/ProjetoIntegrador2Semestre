@@ -64,9 +64,9 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
           List<Alternative> lAlt = questionFilled.getAlternativesList();
 
-          answerOne.setText(String.valueOf(lAlt.get(0).getValue()));
-          answerTwo.setText(String.valueOf(lAlt.get(1).getValue()));
-          answerThree.setText(String.valueOf(lAlt.get(2).getValue()));
+          answerOne.setText(String.valueOf(lAlt.get(0).getValorAlternativa()));
+          answerTwo.setText(String.valueOf(lAlt.get(1).getValorAlternativa()));
+          answerThree.setText(String.valueOf(lAlt.get(2).getValorAlternativa()));
           for (Alternative alt : lAlt ){
             if(alt.correct()){
                crrInd = lAlt.indexOf(alt);
