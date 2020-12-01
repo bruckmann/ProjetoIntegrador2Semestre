@@ -39,6 +39,10 @@ public class QuestionRepository implements IQuestionRepository {
         if (statement != null) {
           statement.close();
         }
+
+        if(resultSet != null) {
+          resultSet.close();
+        }
       } catch (Exception e) {
         e.printStackTrace();
       }
