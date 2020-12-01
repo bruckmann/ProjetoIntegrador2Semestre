@@ -10,10 +10,10 @@ public class Question {
   private String questionStatement;
   public static List<Alternative> alternatives;
 
-  public Question(int questionId, String questionStatement, String type) {
+  public Question(String questionStatement, String type, int idCriador) {
     this.questionStatement = questionStatement;
     this.setType(type);
-    this.questionId = questionId;
+    this.idCriador = idCriador;
   }
 
   public Question() {}
@@ -61,7 +61,7 @@ public class Question {
   }
 
   public List<Alternative> getAlternativesList(){
-    return this.alternatives;
+    return alternatives;
   }
 
   public int getRightAlternative() {

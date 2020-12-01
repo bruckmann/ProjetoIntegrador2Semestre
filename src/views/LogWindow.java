@@ -1,5 +1,6 @@
 package views;
 
+import Entities.user.LogedUser;
 import Entities.user.User;
 import Util.ViewHelper;
 import Repositories.user.AdminRepository;
@@ -93,6 +94,7 @@ public class LogWindow extends StandardFormatLog {
           if(String.valueOf(name.getText()).equals(adminList.getName())
                   && String.valueOf(password.getPassword()).equals(adminList.getPassword()))
           {
+            LogedUser.user = adminList;
             frame.ManageQuestionTable();
             return;
           }

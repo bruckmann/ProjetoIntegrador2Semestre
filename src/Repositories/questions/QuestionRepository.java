@@ -50,7 +50,6 @@ public class QuestionRepository implements IQuestionRepository {
   @Override
   public boolean saveQuestion(Question question) {
     final String questionQuery = "INSERT INTO pergunta (enunciado_pergunta, id_criador, id_tipo) VALUES (?, ?, ?)";
-    final String alternativesQuery = "INSERT INTO alternativa () VALUES ()";
     Connection connection = null;
     PreparedStatement statement = null;
     try {
@@ -59,6 +58,7 @@ public class QuestionRepository implements IQuestionRepository {
       statement.setString(1, question.getQuestionStatement());
       statement.setInt(2, question.getIdCriador());
       statement.setInt(3, question.getType());
+      statement.execute();
     }catch (Exception e) {
       e.printStackTrace();
       return false;
@@ -111,6 +111,7 @@ public class QuestionRepository implements IQuestionRepository {
       statement.setInt(2, question.getIdCriador());
       statement.setInt(3, question.getType());
       statement.setInt(4, question.getId());
+      statement.execute();
     }catch (Exception e) {
       e.printStackTrace();
       return false;

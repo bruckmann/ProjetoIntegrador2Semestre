@@ -27,6 +27,7 @@ public class AdminRepository extends UserRepository {
     return null;
   }
 
+  @Override
   public void saveUser(User admin) {
     try {
       adminList.add(admin);
