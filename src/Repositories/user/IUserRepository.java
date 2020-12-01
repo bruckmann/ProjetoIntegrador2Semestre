@@ -7,9 +7,8 @@ import java.util.List;
 public interface IUserRepository {
 
     List<User>getUsers();
-    User getUserById(int id);
-    void saveUser(User user);
-    void deleteUser(int id);
-    void updateUser(User user);
+    boolean saveUser(User user);
+    boolean deleteUser(int id);
+    boolean updateUser(User user);
 
 }

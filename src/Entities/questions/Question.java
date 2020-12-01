@@ -4,17 +4,20 @@ import java.util.List;
 
 public class Question {
 
-  private final int questionId;
-  private String type;
+  private int questionId;
+  private int type;
+  private int idCriador;
   private String questionStatement;
   private List<Alternative> alternativesList;
 
-  public Question(int questionId, String questionStatement, String type, List<Alternative> alternatives) {
+  public Question(int questionId, String questionStatement, int type, List<Alternative> alternatives) {
     this.questionStatement = questionStatement;
     this.type = type;
     this.alternativesList = alternatives;
     this.questionId = questionId;
   }
+
+  public Question() {}
 
   public int getId(){
     return this.questionId;
@@ -24,8 +27,28 @@ public class Question {
     return this.questionStatement;
   }
 
-  public String getType() {
+  public int getType() {
       return this.type;
+  }
+
+  public int getIdCriador() {
+    return this.idCriador;
+  }
+
+  public void setType(int type ) {
+    this.type = type;
+  }
+
+  public void setId(int id) {
+    this.questionId = id;
+  }
+
+  public void setQuestionStatement (String questionStatement) {
+    this.questionStatement = questionStatement;
+  }
+
+  public void setCriador (int id) {
+    this.idCriador = id;
   }
 
   public List<Alternative> getAlternativesList(){

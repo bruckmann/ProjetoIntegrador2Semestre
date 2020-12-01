@@ -41,4 +41,13 @@ public abstract class User {
     return this.email;
   }
 
+  public void setName (String name) {
+    this.name = name;
+  }
+
+  public void setId (int id) {
+    this.user_id = id;
+  }
+
+
 }

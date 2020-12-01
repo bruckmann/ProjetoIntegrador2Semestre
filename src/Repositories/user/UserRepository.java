@@ -17,12 +17,12 @@ public abstract class UserRepository implements IUserRepository {
   public abstract User getUserById(int id);
 
   @Override
-  public abstract void saveUser(User user);
+  public abstract boolean saveUser(User user);
 
   @Override
-  public abstract void deleteUser(int id);
+  public abstract boolean deleteUser(int id);
 
   @Override
-  public abstract void updateUser(User user);
+  public abstract boolean updateUser(User user);
 
 }

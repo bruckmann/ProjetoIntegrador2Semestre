@@ -7,9 +7,8 @@ import java.util.List;
 public interface IQuestionRepository {
 
   List<Question> getQuestions();
-  Question getQuestionById(int id);
-  void saveQuestion(Question question);
-  void deleteQuestion(int id);
-  void updateQuestion(Question questionUpdate);
+  boolean saveQuestion(Question question);
+  boolean deleteQuestion(int id);
+  boolean updateQuestion(Question question);
 
 }
