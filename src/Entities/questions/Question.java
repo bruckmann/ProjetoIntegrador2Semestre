@@ -8,12 +8,13 @@ public class Question {
   private int type;
   private int idCriador;
   private String questionStatement;
-  public static List<Alternative> alternatives;
+  public  List<Alternative> alternatives;
 
-  public Question(String questionStatement, String type, int idCriador) {
+  public Question(String questionStatement, String type, int idCriador, List<Alternative> alternatives) {
     this.questionStatement = questionStatement;
     this.setType(type);
     this.idCriador = idCriador;
+    this.alternatives = alternatives;
   }
 
   public Question() {}
@@ -68,7 +69,7 @@ public class Question {
     for (Alternative alternative : alternatives) {
 
       if(alternative.correct()) {
-        return alternative.getValue();
+        return alternative.getValorAlternativa();
       }
     }
     return 1;

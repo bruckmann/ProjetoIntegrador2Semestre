@@ -231,7 +231,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
   private void createQuestion(String question,String type, List<Alternative> lAltList) {
     int idCriador = LogedUser.user.getId();
-    Question quest = new Question(question, type, idCriador);
+    Question quest = new Question(question, type, idCriador, lAltList);
 
     questRepo.saveQuestion(quest);
 
@@ -240,7 +240,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
   private void updateQuestion(int questId, String question,String type, List<Alternative> lAltList) {
     int idCriador = LogedUser.user.getId();
-    Question questUpdate = new Question(question, type, idCriador);
+    Question questUpdate = new Question(question, type, idCriador, lAltList);
 
     questRepo.updateQuestion(questUpdate);
 

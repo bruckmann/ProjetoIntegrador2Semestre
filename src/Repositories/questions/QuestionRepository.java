@@ -1,5 +1,6 @@
 package Repositories.questions;
 
+import Entities.questions.Alternative;
 import Entities.questions.Question;
 import Util.ConnectionFactory;
 import java.sql.Connection;
@@ -54,15 +55,33 @@ public class QuestionRepository implements IQuestionRepository {
   @Override
   public boolean saveQuestion(Question question) {
     final String questionQuery = "INSERT INTO pergunta (enunciado_pergunta, id_criador, id_tipo) VALUES (?, ?, ?)";
+    final String alternativeQuery = "INSERT INTO alternativa (valor_alternativa, correta, id_pergunta) VALUES (?, ?, ?)";
     Connection connection = null;
     PreparedStatement statement = null;
+    ResultSet resultSet = null;
     try {
       connection = ConnectionFactory.getConnection();
-      statement = connection.prepareStatement(questionQuery);
+      statement = connection.prepareStatement(questionQuery, Statement.RETURN_GENERATED_KEYS);
       statement.setString(1, question.getQuestionStatement());
       statement.setInt(2, question.getIdCriador());
       statement.setInt(3, question.getType());
       statement.execute();
+
+      resultSet = statement.getGeneratedKeys();
+      while(resultSet.next()) {
+        question.setId(resultSet.getInt(1));
+      }
+      statement.close();
+
+      statement = connection.prepareStatement(alternativeQuery);
+      for ( Alternative alternative : question.getAlternativesList()) {
+        statement.setInt(1, alternative.getValorAlternativa());
+        statement.setBoolean(2, alternative.correct());
+        statement.setInt(3, question.getId());
+        statement.addBatch();
+      }
+      statement.executeBatch();
+
     }catch (Exception e) {
       e.printStackTrace();
       return false;

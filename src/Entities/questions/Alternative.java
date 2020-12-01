@@ -7,8 +7,7 @@ public class Alternative {
   private boolean isRight;
   private int idPergunta;
 
-  public Alternative( int idPergunta, int valorAlternativa, boolean isRight) {
-    this.idPergunta = idPergunta;
+  public Alternative(int valorAlternativa, boolean isRight) {
     this.valorAlternativa = valorAlternativa;
     this.isRight = isRight;
 
@@ -23,7 +22,7 @@ public class Alternative {
   }
 
   public int getIdAlternativa(){
-    return this.idAlternativa
+    return this.idAlternativa;
   }
 
   public boolean correct() {
