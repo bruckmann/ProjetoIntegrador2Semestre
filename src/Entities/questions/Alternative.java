@@ -23,7 +23,7 @@ public class Alternative {
   }
 
   public int getIdAlternativa(){
-    return this.idAlternativa
+    return this.idAlternativa;
   }
 
   public boolean correct() {

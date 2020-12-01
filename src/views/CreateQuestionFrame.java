@@ -159,15 +159,19 @@ public class CreateQuestionFrame extends StandardFormatLog {
     addComponent(panelAnswers,10,1,5,1);
 
     JButton insButton = new JButton("SALVAR");
+    insButton.setForeground(Color.decode("#EEDDFF"));
+    insButton.setBackground(Color.decode("#379683"));
+
     insButton.addActionListener(e -> {
       upsertQuestion();
     });
-    insButton.setForeground(Color.BLUE);
     addComponent(insButton,13,1,1,1);
 
     JButton buttonCancel = new JButton("Cancelar");
+    buttonCancel.setForeground(Color.decode("#EEDDFF"));
+    buttonCancel.setBackground(Color.decode("#379683"));
+
     buttonCancel.addActionListener(e -> frame.ManageQuestionTable());
-    buttonCancel.setForeground(Color.red);
     addComponent(buttonCancel,14,1,1,1);
   }
 
@@ -192,9 +196,9 @@ public class CreateQuestionFrame extends StandardFormatLog {
       String type = "";
       List<Alternative> lAltList = new ArrayList<>();
 
-      lAltList.add(new Alternative(Integer.parseInt(answerOne.getText()), alternativeOne.isSelected()));
+      /*lAltList.add(new Alternative(Integer.parseInt(answerOne.getText()), alternativeOne.isSelected()));
       lAltList.add(new Alternative(Integer.parseInt(answerTwo.getText()), alternativeTwo.isSelected()));
-      lAltList.add(new Alternative(Integer.parseInt(answerThree.getText()), alternativeThree.isSelected()));
+      lAltList.add(new Alternative(Integer.parseInt(answerThree.getText()), alternativeThree.isSelected()));*/
 
       if(somaRadio.isSelected()) {
         type = "soma";

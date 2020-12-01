@@ -68,7 +68,7 @@ public class Question {
     for (Alternative alternative : alternatives) {
 
       if(alternative.correct()) {
-        return alternative.getValue();
+        return alternative.getValorAlternativa();
       }
     }
     return 1;
