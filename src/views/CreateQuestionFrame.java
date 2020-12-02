@@ -248,6 +248,13 @@ public class CreateQuestionFrame extends StandardFormatLog {
   private void updateQuestion(String question,String type, List<Alternative> lAltList, int questionId) {
     int idCriador = LogedUser.user.getId();
     Question questUpdate = new Question(question, type, idCriador, lAltList);
+    List<Alternative> lAlt = questRepo.getQuestionAlternatives(questionFilled.getId());
+
+    for(Alternative alternative : lAltList) {
+      for (Alternative alternativeId : lAlt) {
+        alternative.setIdAlternativa(alternativeId.getIdAlternativa());
+      }
+    }
 
     if(!questRepo.updateQuestion(questUpdate, questionId)) {
       JOptionPane.showMessageDialog(thisFrame, "Houve um erro na atualização das perguntas, tente novamente!", title, infoMessage);
