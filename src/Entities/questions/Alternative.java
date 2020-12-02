@@ -13,6 +13,8 @@ public class Alternative {
 
   }
 
+  public Alternative() {}
+
   public int getValorAlternativa(){
     return this.valorAlternativa;
   }
@@ -33,7 +35,7 @@ public class Alternative {
     this.valorAlternativa = valor;
   }
 
-  public void setRight (boolean right) {
+  public void setCorreta (boolean right) {
     this.isRight = right;
   }
 

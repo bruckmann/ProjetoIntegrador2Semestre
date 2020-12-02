@@ -88,7 +88,7 @@ public class QuestionManager extends StandardFormatLog {
     deleteButton.addActionListener(e -> {
       Question question = modelQuestions.getQuestion(questionTable.getSelectedRow());
       if (question != null) {
-        //JOptionPane.showConfirmDialog(thisFrame, "Você deseja deletar esta pergunta ?", title, infoMessage);
+        JOptionPane.showConfirmDialog(thisFrame, "Você deseja deletar esta pergunta ?", title, infoMessage);
         questRepo.deleteQuestion(question.getId());
         reload();
       }

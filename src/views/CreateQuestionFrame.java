@@ -62,7 +62,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
 
           int crrInd = 0;
 
-          List<Alternative> lAlt = questionFilled.getAlternativesList();
+          List<Alternative> lAlt = questRepo.getQuestionAlternatives(questionFilled.getId());
 
           answerOne.setText(String.valueOf(lAlt.get(0).getValorAlternativa()));
           answerTwo.setText(String.valueOf(lAlt.get(1).getValorAlternativa()));
@@ -196,9 +196,9 @@ public class CreateQuestionFrame extends StandardFormatLog {
       String type = "";
       List<Alternative> lAltList = new ArrayList<>();
 
-      /*lAltList.add(new Alternative(Integer.parseInt(answerOne.getText()), alternativeOne.isSelected()));
+      lAltList.add(new Alternative(Integer.parseInt(answerOne.getText()), alternativeOne.isSelected()));
       lAltList.add(new Alternative(Integer.parseInt(answerTwo.getText()), alternativeTwo.isSelected()));
-      lAltList.add(new Alternative(Integer.parseInt(answerThree.getText()), alternativeThree.isSelected()));*/
+      lAltList.add(new Alternative(Integer.parseInt(answerThree.getText()), alternativeThree.isSelected()));
 
       if(somaRadio.isSelected()) {
         type = "soma";
@@ -209,7 +209,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
       if (questionFilled == null) {
         this.createQuestion(question.getText(), type, lAltList);
       } else {
-        this.updateQuestion(questionFilled.getId(), question.getText(), type, lAltList);
+        this.updateQuestion(question.getText(), type, lAltList);
       }
 
       frame.ManageQuestionTable();
@@ -242,7 +242,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
     JOptionPane.showMessageDialog(thisFrame, "Criação de pergunta concluída !!", title, infoMessage);
   }
 
-  private void updateQuestion(int questId, String question,String type, List<Alternative> lAltList) {
+  private void updateQuestion(String question,String type, List<Alternative> lAltList) {
     int idCriador = LogedUser.user.getId();
     Question questUpdate = new Question(question, type, idCriador, lAltList);
 
