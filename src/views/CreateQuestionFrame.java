@@ -209,7 +209,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
       if (questionFilled == null) {
         this.createQuestion(question.getText(), type, lAltList);
       } else {
-        this.updateQuestion(question.getText(), type, lAltList);
+        this.updateQuestion(question.getText(), type, lAltList, questionFilled.getId());
       }
 
       frame.ManageQuestionTable();
@@ -237,18 +237,25 @@ public class CreateQuestionFrame extends StandardFormatLog {
     int idCriador = LogedUser.user.getId();
     Question quest = new Question(question, type, idCriador, lAltList);
 
-    questRepo.saveQuestion(quest);
+    if(!questRepo.saveQuestion(quest)) {
+      JOptionPane.showMessageDialog(thisFrame, "Houve um erro na criação de perguntas, tente novamente!", title, infoMessage);
+      return;
+    }
 
-    JOptionPane.showMessageDialog(thisFrame, "Criação de pergunta concluída !!", title, infoMessage);
+    JOptionPane.showMessageDialog(thisFrame, "Criação de pergunta concluída!!", title, infoMessage);
   }
 
-  private void updateQuestion(String question,String type, List<Alternative> lAltList) {
+  private void updateQuestion(String question,String type, List<Alternative> lAltList, int questionId) {
     int idCriador = LogedUser.user.getId();
     Question questUpdate = new Question(question, type, idCriador, lAltList);
 
-    questRepo.updateQuestion(questUpdate);
+    if(!questRepo.updateQuestion(questUpdate, questionId)) {
+      JOptionPane.showMessageDialog(thisFrame, "Houve um erro na atualização das perguntas, tente novamente!", title, infoMessage);
+      return;
+    }
 
-    JOptionPane.showMessageDialog(thisFrame, "Atualização de pergunta concluída !!", title, infoMessage);
+    JOptionPane.showMessageDialog(thisFrame, "Atualização de pergunta concluída com sucesso!", title, infoMessage);
+
   }
 
   public void setQuestion(Question lQuestionFilled) {

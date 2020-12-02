@@ -9,6 +9,6 @@ public interface IQuestionRepository {
   List<Question> getQuestions();
   boolean saveQuestion(Question question);
   boolean deleteQuestion(int id);
-  boolean updateQuestion(Question question);
+  boolean updateQuestion(Question question, int id);
 
 }

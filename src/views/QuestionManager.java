@@ -92,7 +92,11 @@ public class QuestionManager extends StandardFormatLog {
                 title, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
         if (answerDialog == JOptionPane.YES_NO_OPTION){
-              questRepo.deleteQuestion(question.getId());
+          if(!questRepo.deleteQuestion(question.getId())) {
+            JOptionPane.showMessageDialog(thisFrame, "Houve um erro para deletar essa pergunta, tente novamente!", title, infoMessage);
+            return;
+          }
+          JOptionPane.showMessageDialog(thisFrame, "Pergunta deletada com sucesso!", title, infoMessage);
         }
         reload();
       }

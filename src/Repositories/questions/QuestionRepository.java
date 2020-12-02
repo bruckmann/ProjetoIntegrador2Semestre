@@ -148,6 +148,8 @@ public class QuestionRepository implements IQuestionRepository {
 
       statement.close();
 
+
+
       statement = connection.prepareStatement(questionQuery);
       statement.setInt(1, id);
       statement.execute();
@@ -168,18 +170,32 @@ public class QuestionRepository implements IQuestionRepository {
   }
 
   @Override
-  public boolean updateQuestion(Question question) {
-    final String query = "UPDATE pergunta SET enunciado_pergunta = ?, id_criador = ?, id_tipo = ?   WHERE id_pergunta = ?";
+  public boolean updateQuestion(Question question, int id) {
+    final String questionQuery = "UPDATE pergunta SET enunciado_pergunta = ?, id_criador = ?, id_tipo = ?   WHERE id_pergunta = ?";
+    final String alternativeQuery = "UPDATE alternativa SET valor_alternativa = ? , correta = ? WHERE id_pergunta = ? AND id_alternativa = ?";
     Connection connection = null;
     PreparedStatement statement = null;
+    ResultSet resultSet = null;
     try {
       connection = ConnectionFactory.getConnection();
-      statement = connection.prepareStatement(query);
+      statement = connection.prepareStatement(questionQuery);
       statement.setString(1, question.getQuestionStatement());
       statement.setInt(2, question.getIdCriador());
       statement.setInt(3, question.getType());
-      statement.setInt(4, question.getId());
+      statement.setInt(4, id);
       statement.execute();
+
+      statement = connection.prepareStatement(alternativeQuery);
+      for ( Alternative alternative : question.getAlternativesList()) {
+        statement.setInt(1, alternative.getValorAlternativa());
+        statement.setBoolean(2, alternative.correct());
+        statement.setInt(3, id);
+        statement.setInt(4, alternative.getIdAlternativa());
+        statement.addBatch();
+      }
+      statement.executeBatch();
+
+
     }catch (Exception e) {
       e.printStackTrace();
       return false;
@@ -187,6 +203,10 @@ public class QuestionRepository implements IQuestionRepository {
       try{
         if (statement != null) {
           statement.close();
+        }
+
+        if (resultSet != null) {
+          resultSet.close();
         }
       } catch (Exception e) {
         e.printStackTrace();
