@@ -1,23 +1,33 @@
 package views;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.text.AttributeSet;
 import java.awt.*;
 
 public class StandardFormatLog extends JPanel {
   public GridBagConstraints constraints;
-  public GridBagLayout layout;
+  public BorderLayout layout;
+  public GridBagLayout secondLayout;
+  public JPanel panelLayout;
   public static final Insets FIELD_INSETS = new Insets(7,0,0,0);
 
   public StandardFormatLog() {
 
-
-    layout = new GridBagLayout();
+    layout = new BorderLayout();
     setLayout(layout);
 
     constraints = new GridBagConstraints();
-    setBackground(Color.decode("#5CDB95"));
+    secondLayout = new GridBagLayout();
 
+    panelLayout = new JPanel();
+    panelLayout.setBackground(Color.decode("#5CDB95"));
+    panelLayout.setLayout(secondLayout);
 
+    Font font = new Font("Verdana", Font.PLAIN, 11);
+    Font fontSecond = new Font("Verdana", Font.PLAIN,12);
+    UIManager.put("Label.font", font);
+    UIManager.put("Button.font",font);
+    UIManager.put("RadioButton.font",fontSecond);
   }
 
   public void addComponent(JComponent comp, int row, int col, int width, int height) {
@@ -29,7 +39,7 @@ public class StandardFormatLog extends JPanel {
     constraints.insets = FIELD_INSETS;
     constraints.fill = GridBagConstraints.BOTH;
 
-    layout.setConstraints(comp, constraints);
+    secondLayout.setConstraints(comp, constraints);
     add(comp);
   }
 }

@@ -86,22 +86,34 @@ public class CreateQuestionFrame extends StandardFormatLog {
   }
 
   private void setComponent() {
-    JLabel label;
+    JLabel labelHeader;
+    JLabel labelType;
+    JLabel labelQuestion;
+    JLabel labelAlternative;
+
+    JButton saveButton;
+    JButton buttonCancel;
+
     JPanel panelType = new JPanel();
     JPanel panelAlt = new JPanel();
     JPanel panelAnswers = new JPanel();
+    JPanel panelHeader = new JPanel();
     JScrollPane scrollPane;
 
+    panelHeader.setBackground(Color.decode("#8EE4AF"));
     panelType.setBackground(Color.decode("#5CDB95"));
     panelAlt.setBackground(Color.decode("#5CDB95"));
     panelAnswers.setBackground(Color.decode("#5CDB95"));
 
 
-    label = new JLabel("OLÁ CRIE AQUI SUAS PERGUNTAS: ");
-    addComponent(label, 0, 0,5,2);
+    labelHeader = new JLabel("OLÁ CRIE AQUI SUAS PERGUNTAS: ");
+    addComponent(labelHeader, 0, 0,5,2);
+    panelHeader.add(labelHeader);
+    add(panelHeader,BorderLayout.NORTH);
 
-    label = new JLabel("TIPO: ");
-    addComponent(label,2,0,1,1);
+    labelType = new JLabel("TIPO");
+    addComponent(labelType,2,0,1,1);
+    panelLayout.add(labelType);
 
     mathType = new ButtonGroup();
     somaRadio = new JRadioButton("SOMA");
@@ -115,16 +127,20 @@ public class CreateQuestionFrame extends StandardFormatLog {
     panelType.add(somaRadio);
     panelType.add(subtracaoRadio);
     addComponent(panelType,2,1,1,1);
+    panelLayout.add(panelType);
 
-    label = new JLabel("PERGUNTA: ");
-    addComponent(label,3,0,1,1);
+    labelQuestion = new JLabel("PERGUNTA");
+    addComponent(labelQuestion,3,0,1,1);
     question = new JTextArea(5,30);
     question.setName("pergunta");
     scrollPane = new JScrollPane(question);
     addComponent(scrollPane,3,1,1,5);
+    panelLayout.add(labelQuestion);
+    panelLayout.add(scrollPane);
 
-    label = new JLabel("ALTERNATIVAS");
-    addComponent(label,9,0,1,1);
+    labelAlternative = new JLabel("ALTERNATIVAS");
+    addComponent(labelAlternative,9,0,1,1);
+    panelLayout.add(labelAlternative);
 
     alternatives = new ButtonGroup();
     alternativeOne = new JRadioButton("alternativa 1");
@@ -143,6 +159,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
     panelAlt.add(alternativeThree);
 
     addComponent(panelAlt,9,1,1,1);
+    panelLayout.add(panelAlt);
 
 
 
@@ -157,22 +174,26 @@ public class CreateQuestionFrame extends StandardFormatLog {
     panelAnswers.add(answerTwo);
     panelAnswers.add(answerThree);
     addComponent(panelAnswers,10,1,5,1);
+    panelLayout.add(panelAnswers);
 
-    JButton insButton = new JButton("SALVAR");
-    insButton.setForeground(Color.decode("#EEDDFF"));
-    insButton.setBackground(Color.decode("#379683"));
+    saveButton = new JButton("SALVAR");
+    saveButton.setForeground(Color.decode("#EEDDFF"));
+    saveButton.setBackground(Color.decode("#379683"));
 
-    insButton.addActionListener(e -> {
+    saveButton.addActionListener(e -> {
       upsertQuestion();
     });
-    addComponent(insButton,13,1,1,1);
+    addComponent(saveButton,13,1,1,1);
+    panelLayout.add(saveButton);
 
-    JButton buttonCancel = new JButton("Cancelar");
+    buttonCancel = new JButton("Cancelar");
     buttonCancel.setForeground(Color.decode("#EEDDFF"));
     buttonCancel.setBackground(Color.decode("#379683"));
 
     buttonCancel.addActionListener(e -> frame.ManageQuestionTable());
     addComponent(buttonCancel,14,1,1,1);
+    panelLayout.add(buttonCancel);
+    add(panelLayout,BorderLayout.CENTER);
   }
 
   private void upsertQuestion() {

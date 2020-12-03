@@ -45,38 +45,60 @@ public class RegisterAdm extends StandardFormatLog {
   }
 
   private void init(){
-    JLabel label;
+    JLabel labelName;
+    JLabel labelPassword;
+    JLabel labelAge;
+    JLabel labelEmail;
     JLabel header;
+
+    JButton buttonCreate;
+    JButton buttonCancel;
+
+    JPanel panelHeader;
+
+    panelHeader = new JPanel();
+    panelHeader.setBackground(Color.decode("#8EE4AF"));
 
     header = new JLabel("OLÁ INSIRA SEUS DADOS: ");
     addComponent(header, 0, 1,5,2);
+    panelHeader.add(header);
+    add(panelHeader,BorderLayout.NORTH);
 
-    label = new JLabel("NOME: ");
-    addComponent(label,2,1,1,1);
+    labelName = new JLabel("NOME: ");
+    addComponent(labelName,2,1,1,1);
     name = new JTextField(20);
     name.setName("Nome");
     addComponent(name,3,1,3,1);
+    panelLayout.add(labelName);
+    panelLayout.add(name);
 
-    label = new JLabel("SENHA: ");
-    addComponent(label, 4,1,1,1);
+    labelPassword = new JLabel("SENHA: ");
+    addComponent(labelPassword, 4,1,1,1);
     password = new JPasswordField(10);
     password.setName("Senha");
     addComponent(password, 5,1,3,1);
+    panelLayout.add(labelPassword);
+    panelLayout.add(password);
 
-    label = new JLabel("IDADE: ");
-    addComponent(label, 6,1,1,1);
+
+    labelAge = new JLabel("IDADE: ");
+    addComponent(labelAge, 6,1,1,1);
     yearsOld = new NumberMask(3);
     yearsOld.setName("Idade");
     addComponent(yearsOld,7,1,3,1);
+    panelLayout.add(labelAge);
+    panelLayout.add(yearsOld);
 
-    label = new JLabel("EMAIL: ");
-    addComponent(label, 8,1,1,1);
+    labelEmail = new JLabel("EMAIL: ");
+    addComponent(labelEmail, 8,1,1,1);
     email = new JTextField(20);
     email.setName("Email");
     addComponent(email,9,1,3,1);
+    panelLayout.add(labelEmail);
+    panelLayout.add(email);
 
-    JButton button = new JButton("CRIAR CONTA");
-    button.addActionListener(new ActionListener() {
+    buttonCreate = new JButton("CRIAR CONTA");
+    buttonCreate.addActionListener(new ActionListener() {
       Integer id = 0;
 
       @Override
@@ -121,14 +143,17 @@ public class RegisterAdm extends StandardFormatLog {
         }
       }
     });
-    button.setForeground(Color.decode("#EEDDFF"));
-    button.setBackground(Color.decode("#379683"));
-    addComponent(button, 10,1,3,1);
+    buttonCreate.setForeground(Color.decode("#EEDDFF"));
+    buttonCreate.setBackground(Color.decode("#379683"));
+    addComponent(buttonCreate, 10,1,3,1);
+    panelLayout.add(buttonCreate);
 
-    JButton buttonCancel = new JButton("Cancelar");
+    buttonCancel = new JButton("Cancelar");
     buttonCancel.addActionListener(e -> frame.ReturnToLogPage());
     buttonCancel.setForeground(Color.decode("#EEDDFF"));
     buttonCancel.setBackground(Color.decode("#379683"));
     addComponent(buttonCancel,11,1,3,1);
+    panelLayout.add(buttonCancel);
+    add(panelLayout,BorderLayout.CENTER);
   }
 }

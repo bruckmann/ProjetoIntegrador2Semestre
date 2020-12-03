@@ -6,6 +6,7 @@ import Util.ViewHelper;
 import Repositories.user.AdminRepository;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +33,16 @@ public class LogWindow extends StandardFormatLog {
     JTextField name;
     JPasswordField password;
     JButton button;
+    JPanel panelHeader;
+
+    panelHeader = new JPanel();
+    panelHeader.setBackground(Color.decode("#8EE4AF"));
 
     JLabel header = new JLabel("OLÁ FAÇA SEU LOGIN");
     addComponent(header,0,1,1,1);
     header.setForeground(Color.BLACK);
-
+    panelHeader.add(header);
+    add(panelHeader,BorderLayout.NORTH);
 
 
     labelName = new JLabel("NOME: ");
@@ -44,24 +50,27 @@ public class LogWindow extends StandardFormatLog {
     name.setName("nome");
     addComponent(labelName,1,1,1,1);
     addComponent(name, 2,1,3,1);
+    panelLayout.add(labelName);
+    panelLayout.add(name);
 
     labelPassword = new JLabel("SENHA: ");
     password = new JPasswordField(20);
     password.setName("senha");
-
     addComponent(labelPassword, 3,1,1,1);
     addComponent(password, 4,1,3,1);
+    panelLayout.add(labelPassword);
+    panelLayout.add(password);
 
     labelCreateAccount = new JLabel("CRIAR CONTA: ");
-
     addComponent(labelCreateAccount, 6,1,1,1);
+    panelLayout.add(labelCreateAccount);
 
     button = new JButton("ADMINISTRADOR");
-
     button.addActionListener(e -> frame.showLogAdm());
     button.setForeground(Color.decode("#EEDDFF"));
     button.setBackground(Color.decode("#379683"));
     addComponent(button, 7,1,3,1);
+    panelLayout.add(button);
 
         /*JButton button2 = new JButton("JOGADOR");
         button2.addActionListener(new ActionListener() {
@@ -77,6 +86,7 @@ public class LogWindow extends StandardFormatLog {
     JButton buttonLog = new JButton("LOGAR");
     buttonLog.setForeground(Color.decode("#EEDDFF"));
     buttonLog.setBackground(Color.decode("#379683"));
+
 
     buttonLog.addActionListener(e -> {
       List<JTextField> emptyFields;
@@ -114,5 +124,7 @@ public class LogWindow extends StandardFormatLog {
       }
     });
     addComponent(buttonLog,5,1,3,1);
+    panelLayout.add(buttonLog);
+    add(panelLayout,BorderLayout.CENTER);
   }
 }
