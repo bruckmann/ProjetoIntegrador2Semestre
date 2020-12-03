@@ -23,7 +23,7 @@ public class StandardFormatLog extends JPanel {
     panelLayout.setBackground(Color.decode("#5CDB95"));
     panelLayout.setLayout(secondLayout);
 
-    Font font = new Font("Verdana", Font.PLAIN, 11);
+    Font font = new Font("Sugoe UI", Font.PLAIN, 11);
     Font fontSecond = new Font("Verdana", Font.PLAIN,12);
     UIManager.put("Label.font", font);
     UIManager.put("Button.font",font);
