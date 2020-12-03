@@ -186,7 +186,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
     addComponent(saveButton,13,1,1,1);
     panelLayout.add(saveButton);
 
-    buttonCancel = new JButton("Cancelar");
+    buttonCancel = new JButton("CANCELAR");
     buttonCancel.setForeground(Color.decode("#EEDDFF"));
     buttonCancel.setBackground(Color.decode("#379683"));
 
