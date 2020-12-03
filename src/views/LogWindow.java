@@ -1,12 +1,11 @@
 package views;
 
-import Entities.user.LogedUser;
+import Entities.user.LoggedUser;
 import Entities.user.User;
 import Util.ViewHelper;
 import Repositories.user.AdminRepository;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +103,7 @@ public class LogWindow extends StandardFormatLog {
           if(String.valueOf(email.getText()).equals(adminList.getEmail())
                   && String.valueOf(password.getPassword()).equals(adminList.getPassword()))
           {
-            LogedUser.user = adminList;
+            LoggedUser.user = adminList;
             frame.ManageQuestionTable();
             return;
           }

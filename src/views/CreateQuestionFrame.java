@@ -2,8 +2,7 @@ package views;
 
 import Entities.questions.Alternative;
 import Entities.questions.Question;
-import Entities.user.LogedUser;
-import Entities.user.User;
+import Entities.user.LoggedUser;
 import Repositories.questions.QuestionRepository;
 import Util.ViewHelper;
 
@@ -255,7 +254,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
   }
 
   private void createQuestion(String question,String type, List<Alternative> lAltList) {
-    int idCriador = LogedUser.user.getId();
+    int idCriador = LoggedUser.user.getId();
     Question quest = new Question(question, type, idCriador, lAltList);
 
     if(!questRepo.saveQuestion(quest)) {
@@ -267,7 +266,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
   }
 
   private void updateQuestion(String question,String type, List<Alternative> lAltList, int questionId) {
-    int idCriador = LogedUser.user.getId();
+    int idCriador = LoggedUser.user.getId();
     Question questUpdate = new Question(question, type, idCriador, lAltList);
     List<Alternative> lAlt = questRepo.getQuestionAlternatives(questionFilled.getId());
 
