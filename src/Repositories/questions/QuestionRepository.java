@@ -12,7 +12,6 @@ import java.util.List;
 
 public class QuestionRepository implements IQuestionRepository {
 
-
   @Override
   public List<Question> getQuestions() {
     List<Question> questions = new ArrayList<>();
@@ -88,7 +87,6 @@ public class QuestionRepository implements IQuestionRepository {
     return alternatives;
   }
 
-
   @Override
   public boolean saveQuestion(Question question) {
     final String questionQuery = "INSERT INTO pergunta (enunciado_pergunta, id_criador, id_tipo) VALUES (?, ?, ?)";
@@ -148,8 +146,6 @@ public class QuestionRepository implements IQuestionRepository {
 
       statement.close();
 
-
-
       statement = connection.prepareStatement(questionQuery);
       statement.setInt(1, id);
       statement.execute();
@@ -171,11 +167,13 @@ public class QuestionRepository implements IQuestionRepository {
 
   @Override
   public boolean updateQuestion(Question question, int id) {
-    final String questionQuery = "UPDATE pergunta SET enunciado_pergunta = ?, id_criador = ?, id_tipo = ?   WHERE id_pergunta = ?";
-    final String alternativeQuery = "UPDATE alternativa SET valor_alternativa = ? , correta = ? WHERE id_pergunta = ? AND id_alternativa = ?";
+    final String questionQuery = "UPDATE pergunta SET enunciado_pergunta = ?, id_criador = ?, id_tipo = ?   "
+                               + "WHERE id_pergunta = ?";
+    final String alternativeQuery = "UPDATE alternativa SET valor_alternativa = ? , correta = ? "
+                                  + "WHERE id_pergunta = ? AND id_alternativa = ?";
+
     Connection connection = null;
     PreparedStatement statement = null;
-    ResultSet resultSet = null;
     try {
       connection = ConnectionFactory.getConnection();
       statement = connection.prepareStatement(questionQuery);
@@ -195,7 +193,6 @@ public class QuestionRepository implements IQuestionRepository {
       }
       statement.executeBatch();
 
-
     }catch (Exception e) {
       e.printStackTrace();
       return false;
@@ -204,10 +201,6 @@ public class QuestionRepository implements IQuestionRepository {
         if (statement != null) {
           statement.close();
         }
-
-        if (resultSet != null) {
-          resultSet.close();
-        }
       } catch (Exception e) {
         e.printStackTrace();
         return false;
@@ -215,5 +208,4 @@ public class QuestionRepository implements IQuestionRepository {
     }
     return true;
   }
-
 }

@@ -250,10 +250,8 @@ public class CreateQuestionFrame extends StandardFormatLog {
     Question questUpdate = new Question(question, type, idCriador, lAltList);
     List<Alternative> lAlt = questRepo.getQuestionAlternatives(questionFilled.getId());
 
-    for(Alternative alternative : lAltList) {
-      for (Alternative alternativeId : lAlt) {
-        alternative.setIdAlternativa(alternativeId.getIdAlternativa());
-      }
+    for(int i = 0; i < lAlt.size(); i++) {
+      lAltList.get(i).setIdAlternativa(lAlt.get(i).getIdAlternativa());
     }
 
     if(!questRepo.updateQuestion(questUpdate, questionId)) {
