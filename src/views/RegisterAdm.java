@@ -143,7 +143,7 @@ public class RegisterAdm extends StandardFormatLog {
     addComponent(buttonCreate, 10,1,3,1);
     panelLayout.add(buttonCreate);
 
-    buttonCancel = new JButton("Cancelar");
+    buttonCancel = new JButton("CANCELAR");
     buttonCancel.addActionListener(e -> frame.ReturnToLogPage());
     buttonCancel.setForeground(Color.decode("#EEDDFF"));
     buttonCancel.setBackground(Color.decode("#379683"));
