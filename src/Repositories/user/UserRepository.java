@@ -12,9 +12,9 @@ public abstract class UserRepository  {
     return null;
   }
 
-  public abstract User getUserById(int id);
+  public abstract List<User> getUserByEmail(String email);
 
-  public abstract void saveUser(User user);
+  public abstract boolean saveUser(User user);
 
   public abstract void deleteUser(int id);
 

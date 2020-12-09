@@ -117,18 +117,13 @@ public class RegisterAdm extends StandardFormatLog {
           User admin = new Admin(id, name.getText(), String.valueOf(password.getPassword()),
                   Integer.parseInt(yearsOld.getText()), email.getText());
 
-          List<User> admins;
-          admins = admRepo.getUsers();
 
-          for(User adminList : admins) {
-            if(adminList.getEmail().equals(email.getText())) {
-              JOptionPane.showMessageDialog(thisFrame,"Esse email já está cadastrado!", title, infoMessage);
-              return;
-            }
+          if(!admRepo.saveUser(admin)) {
+            JOptionPane.showMessageDialog(thisFrame,"Erro na criação de conta!", title, infoMessage);
+            return;
           }
-          admRepo.saveUser(admin);
 
-          JOptionPane.showMessageDialog(thisFrame,"Criação de conta concluída !!", title, infoMessage);
+          JOptionPane.showMessageDialog(thisFrame,"Criação de conta concluída!", title, infoMessage);
           frame.ReturnToLogPage();
           } else {
           for (JTextField field : emptyFields) {
@@ -148,7 +143,7 @@ public class RegisterAdm extends StandardFormatLog {
     addComponent(buttonCreate, 10,1,3,1);
     panelLayout.add(buttonCreate);
 
-    buttonCancel = new JButton("Cancelar");
+    buttonCancel = new JButton("CANCELAR");
     buttonCancel.addActionListener(e -> frame.ReturnToLogPage());
     buttonCancel.setForeground(Color.decode("#EEDDFF"));
     buttonCancel.setBackground(Color.decode("#379683"));

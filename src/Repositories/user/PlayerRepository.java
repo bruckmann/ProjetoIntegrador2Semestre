@@ -13,6 +13,10 @@ public class PlayerRepository extends UserRepository{
   }
 
   @Override
+  public List<User> getUserByEmail(String email) {
+    return null;
+  }
+
   public User getUserById(int id) {
     for (User player : playerList) {
       if (player.getId() == id) {
@@ -26,12 +30,9 @@ public class PlayerRepository extends UserRepository{
     return null;
   }
 
-  public void saveUser(User player) {
-    try {
-      playerList.add(player);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+  public boolean saveUser(User player) {
+
+    return false;
   }
 
   @Override

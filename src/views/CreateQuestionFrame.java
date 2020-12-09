@@ -2,8 +2,7 @@ package views;
 
 import Entities.questions.Alternative;
 import Entities.questions.Question;
-import Entities.user.LogedUser;
-import Entities.user.User;
+import Entities.user.LoggedUser;
 import Repositories.questions.QuestionRepository;
 import Util.ViewHelper;
 
@@ -111,8 +110,8 @@ public class CreateQuestionFrame extends StandardFormatLog {
     panelHeader.add(labelHeader);
     add(panelHeader,BorderLayout.NORTH);
 
-    labelType = new JLabel("TIPO");
-    addComponent(labelType,2,0,1,1);
+    labelType = new JLabel("TIPO:");
+    addComponent(labelType,1,1,1,1);
     panelLayout.add(labelType);
 
     mathType = new ButtonGroup();
@@ -129,17 +128,17 @@ public class CreateQuestionFrame extends StandardFormatLog {
     addComponent(panelType,2,1,1,1);
     panelLayout.add(panelType);
 
-    labelQuestion = new JLabel("PERGUNTA");
-    addComponent(labelQuestion,3,0,1,1);
+    labelQuestion = new JLabel("PERGUNTA:");
+    addComponent(labelQuestion,3,1,1,1);
     question = new JTextArea(5,30);
     question.setName("pergunta");
     scrollPane = new JScrollPane(question);
-    addComponent(scrollPane,3,1,1,5);
+    addComponent(scrollPane,4,1,1,5);
     panelLayout.add(labelQuestion);
     panelLayout.add(scrollPane);
 
-    labelAlternative = new JLabel("ALTERNATIVAS");
-    addComponent(labelAlternative,9,0,1,1);
+    labelAlternative = new JLabel("ALTERNATIVAS:");
+    addComponent(labelAlternative,10,1,1,1);
     panelLayout.add(labelAlternative);
 
     alternatives = new ButtonGroup();
@@ -158,7 +157,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
     panelAlt.add(alternativeTwo);
     panelAlt.add(alternativeThree);
 
-    addComponent(panelAlt,9,1,1,1);
+    addComponent(panelAlt,11,1,1,1);
     panelLayout.add(panelAlt);
 
 
@@ -173,7 +172,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
     panelAnswers.add(answerOne);
     panelAnswers.add(answerTwo);
     panelAnswers.add(answerThree);
-    addComponent(panelAnswers,10,1,5,1);
+    addComponent(panelAnswers,12,1,5,1);
     panelLayout.add(panelAnswers);
 
     saveButton = new JButton("SALVAR");
@@ -186,7 +185,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
     addComponent(saveButton,13,1,1,1);
     panelLayout.add(saveButton);
 
-    buttonCancel = new JButton("Cancelar");
+    buttonCancel = new JButton("CANCELAR");
     buttonCancel.setForeground(Color.decode("#EEDDFF"));
     buttonCancel.setBackground(Color.decode("#379683"));
 
@@ -255,7 +254,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
   }
 
   private void createQuestion(String question,String type, List<Alternative> lAltList) {
-    int idCriador = LogedUser.user.getId();
+    int idCriador = LoggedUser.user.getId();
     Question quest = new Question(question, type, idCriador, lAltList);
 
     if(!questRepo.saveQuestion(quest)) {
@@ -267,7 +266,7 @@ public class CreateQuestionFrame extends StandardFormatLog {
   }
 
   private void updateQuestion(String question,String type, List<Alternative> lAltList, int questionId) {
-    int idCriador = LogedUser.user.getId();
+    int idCriador = LoggedUser.user.getId();
     Question questUpdate = new Question(question, type, idCriador, lAltList);
     List<Alternative> lAlt = questRepo.getQuestionAlternatives(questionFilled.getId());
 

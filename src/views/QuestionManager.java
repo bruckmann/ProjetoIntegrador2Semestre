@@ -132,7 +132,7 @@ public class QuestionManager extends StandardFormatLog {
     panelButtonsCancel.setBackground(Color.decode("#8EE4AF"));
     panelButtonsCancel.setPreferredSize(new Dimension(150,70));
 
-    cancelButton = new JButton("CANCELAR");
+    cancelButton = new JButton("DESLOGAR");
     cancelButton.setForeground(Color.decode("#EEDDFF"));
     cancelButton.setBackground(Color.decode("#379683"));
 

@@ -1,12 +1,11 @@
 package views;
 
-import Entities.user.LogedUser;
+import Entities.user.LoggedUser;
 import Entities.user.User;
 import Util.ViewHelper;
 import Repositories.user.AdminRepository;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +26,10 @@ public class LogWindow extends StandardFormatLog {
   }
 
   private void init(){
-    JLabel labelName;
+    JLabel labelEmail;
     JLabel labelPassword;
     JLabel labelCreateAccount;
-    JTextField name;
+    JTextField email;
     JPasswordField password;
     JButton button;
     JPanel panelHeader;
@@ -45,13 +44,13 @@ public class LogWindow extends StandardFormatLog {
     add(panelHeader,BorderLayout.NORTH);
 
 
-    labelName = new JLabel("NOME: ");
-    name = new JTextField(20);
-    name.setName("nome");
-    addComponent(labelName,1,1,1,1);
-    addComponent(name, 2,1,3,1);
-    panelLayout.add(labelName);
-    panelLayout.add(name);
+    labelEmail = new JLabel("EMAIL: ");
+    email = new JTextField(20);
+    email.setName("email");
+    addComponent(labelEmail,1,1,1,1);
+    addComponent(email, 2,1,3,1);
+    panelLayout.add(labelEmail);
+    panelLayout.add(email);
 
     labelPassword = new JLabel("SENHA: ");
     password = new JPasswordField(20);
@@ -91,20 +90,20 @@ public class LogWindow extends StandardFormatLog {
     buttonLog.addActionListener(e -> {
       List<JTextField> emptyFields;
       List<JTextField> aJTextList = new ArrayList<>();
-      aJTextList.add(name);
+      aJTextList.add(email);
 
       emptyFields = ViewHelper.validateFields(aJTextList);
       boolean isPssValid = password.getPassword().length > 0;
 
       if(emptyFields.isEmpty()  && isPssValid) {
         List<User> admins;
-        admins = admRepo.getUsers();
+        admins = admRepo.getUserByEmail(String.valueOf(email.getText()));
 
         for(User adminList : admins) {
-          if(String.valueOf(name.getText()).equals(adminList.getName())
+          if(String.valueOf(email.getText()).equals(adminList.getEmail())
                   && String.valueOf(password.getPassword()).equals(adminList.getPassword()))
           {
-            LogedUser.user = adminList;
+            LoggedUser.user = adminList;
             frame.ManageQuestionTable();
             return;
           }
